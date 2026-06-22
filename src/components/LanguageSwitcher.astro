@@ -1,0 +1,46 @@
+---
+---
+
+<button
+  id="lang-toggle"
+  class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium"
+  aria-label="切换语言"
+>
+  <span class="lang-zh">中</span>
+  <span class="lang-en hidden">EN</span>
+</button>
+
+<script is:inline>
+  (function() {
+    function init() {
+      var btn = document.getElementById('lang-toggle');
+      if (!btn) return;
+
+      function updateLabel() {
+        var locale = localStorage.getItem('locale') || 'zh';
+        var zhLabel = btn.querySelector('.lang-zh');
+        var enLabel = btn.querySelector('.lang-en');
+        if (locale === 'en') {
+          zhLabel?.classList.add('hidden');
+          enLabel?.classList.remove('hidden');
+        } else {
+          zhLabel?.classList.remove('hidden');
+          enLabel?.classList.add('hidden');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        var current = localStorage.getItem('locale') || 'zh';
+        var next = current === 'zh' ? 'en' : 'zh';
+        localStorage.setItem('locale', next);
+        updateLabel();
+        window.location.reload();
+      });
+
+      updateLabel();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>

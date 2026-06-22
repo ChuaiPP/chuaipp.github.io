@@ -22,3 +22,4 @@ export const SOCIAL_LINKS = [
 
 export const npmCDN = '';
 export const walineServer = '';
+export const friendCircleServer = '';

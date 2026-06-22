@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Comment from '../components/waline/Comment.astro';
 import fs from 'node:fs';
 import path from 'node:path';
+import { friendCircleServer } from '../consts.ts';
 
 interface FriendArticle {
   title: string;
@@ -54,7 +55,7 @@ const specialGroup = linksData.friends.find((g) => g.id_name === 'special-links'
 const friendList = (friendGroup?.link_list || []) as FriendLink[];
 const specialList = (specialGroup?.link_list || []) as SpecialLink[];
 
-const API_URL = 'https://yourdomains.com/all.json';// friend-circle-lite 服务的json数据
+const API_URL = friendCircleServer + '/all.json';// friend-circle-lite 服务的json数据
 let data: FriendData | null = null;
 let fetchError = false;
 

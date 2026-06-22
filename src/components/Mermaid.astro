@@ -1,0 +1,65 @@
+---
+---
+
+<script is:inline>
+  (function() {
+    function init() {
+      if (typeof mermaid === 'undefined') return;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+        securityLevel: 'loose',
+      });
+
+      var mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+      if (mermaidBlocks.length === 0) return;
+
+      mermaidBlocks.forEach(function(pre, index) {
+        var code = pre.querySelector('code');
+        var text = '';
+        if (code) {
+          var lines = code.querySelectorAll('.line');
+          if (lines.length > 0) {
+            text = Array.from(lines).map(function(line) {
+              return line.textContent || '';
+            }).join('\n');
+          } else {
+            text = code.textContent || '';
+          }
+        }
+
+        var container = document.createElement('div');
+        container.className = 'mermaid-container my-6 p-4 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-x-auto';
+
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.id = 'mermaid-' + index;
+        div.textContent = text;
+        container.appendChild(div);
+
+        pre.parentNode?.insertBefore(container, pre);
+        pre.remove();
+      });
+
+      mermaid.run();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>
+
+<style>
+  .mermaid-container {
+    text-align: center;
+  }
+  .mermaid-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

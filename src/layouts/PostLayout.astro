@@ -38,11 +38,22 @@ const {title, description, headings, cover, series, currentSlug} = Astro.props;
       </div>
     )
   }
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col lg:flex-row gap-8 py-8">
+      <div class="flex-1 min-w-0 order-1">
+        <article class="prose max-w-none">
+          <slot/>
+        </article>
+        <div class="mt-8">
+          <ShareButtons title={title} />
+        </div>
+        <div class="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800">
+          <Comment />
+        </div>
+      </div>
       {
         headings && headings.length > 0 && (
-          <aside class="w-full lg:w-56 shrink-0 order-1">
+          <aside class="w-full lg:w-60 shrink-0 order-2">
             <div class="sticky top-24 space-y-4">
               <TableOfContents headings={headings}/>
               {series && currentSlug && (
@@ -54,25 +65,13 @@ const {title, description, headings, cover, series, currentSlug} = Astro.props;
       }
       {
         (!headings || headings.length === 0) && series && currentSlug && (
-          <aside class="w-full lg:w-56 shrink-0 order-1">
+          <aside class="w-full lg:w-60 shrink-0 order-2">
             <div class="sticky top-24">
               <SeriesList series={series} currentSlug={currentSlug} />
             </div>
           </aside>
         )
       }
-      <div class="flex-1 min-w-0 order-2">
-        <article class="prose max-w-none">
-          <slot/>
-        </article>
-        <div class="mt-8">
-          <ShareButtons title={title} />
-        </div>
-        <div class="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800">
-          <Comment />
-        </div>
-      </div>
-      <div class="hidden lg:block w-56 shrink-0 order-3"></div>
     </div>
   </div>
 </BaseLayout>

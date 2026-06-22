@@ -182,6 +182,19 @@ html {
   position: relative;
 }
 
+.code-block-wrapper .code-lang-label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-size: 0.7rem;
+  font-family: var(--font-family-mono);
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
 .code-block-wrapper .copy-btn {
   position: absolute;
   top: 0.5rem;
@@ -213,5 +226,20 @@ html {
 .code-block-wrapper .copy-btn.copied {
   color: #4ade80;
   opacity: 1;
+}
+
+.code-block-wrapper pre {
+  counter-reset: line;
+}
+
+.code-block-wrapper pre code .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.5rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.85em;
 }
 

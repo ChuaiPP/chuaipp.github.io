@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE, NAV_ITEMS } from '../consts';
 import Search from './Search.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 
 function isArticleLabel(item: typeof NAV_ITEMS[number]) {
   return item.label === '文章';
@@ -59,6 +60,8 @@ function isArticleLabel(item: typeof NAV_ITEMS[number]) {
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </button>
+
+        <LanguageSwitcher />
 
         <button
           id="theme-toggle"
