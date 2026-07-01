@@ -69,4 +69,4 @@ bun dev
 - **评论**: Waline
 - **部署**: Vercel / Cloudflare Pages / 任意静态托管
 
-> 使用 `Ctrl + K` 快捷键随时唤出搜索面板。
+> 使用 `Ctrl + K` 快捷键随时唤出搜索面板。                        
