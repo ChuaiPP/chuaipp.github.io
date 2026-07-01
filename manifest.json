@@ -1,0 +1,16 @@
+{
+  "name": "Sify Blog",
+  "short_name": "Sify",
+  "description": "一个基于 Astro 的现代化博客主题",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#e9536a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

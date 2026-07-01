@@ -1,0 +1,708 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v6.4.8"><meta name="theme-color" content="#e9536a"><title>MDX 与数学公式 - Sify Blog</title><meta name="description" content="演示 MDX 组件嵌入、KaTeX 数学公式渲染和外链卡片功能。"><meta name="author" content="santisify"><meta name="robots" content="index, follow"><link rel="canonical" href="https://santisify.top/post/mdx-demo/"><meta property="og:site_name" content="Sify Blog"><meta property="og:title" content="MDX 与数学公式 - Sify Blog"><meta property="og:type" content="article"><meta property="og:description" content="演示 MDX 组件嵌入、KaTeX 数学公式渲染和外链卡片功能。"><meta property="og:url" content="https://santisify.top/post/mdx-demo/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200"><meta property="og:image:alt" content="MDX 与数学公式 - Sify Blog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="MDX 与数学公式 - Sify Blog"><meta name="twitter:description" content="演示 MDX 组件嵌入、KaTeX 数学公式渲染和外链卡片功能。"><meta name="twitter:image" content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200"><meta property="article:author" content="santisify"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"MDX 与数学公式 - Sify Blog","description":"演示 MDX 组件嵌入、KaTeX 数学公式渲染和外链卡片功能。","url":"https://santisify.top/post/mdx-demo/","author":{"@type":"Person","name":"santisify"},"publisher":{"@type":"Organization","name":"Sify Blog","logo":{"@type":"ImageObject","url":"https://santisify.top/favicon.svg"}},"image":"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200"}</script><link rel="alternate" type="application/rss+xml" title="Sify Blog" href="/rss.xml"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#e9536a"><script src="/assets/js/mermaid.min.js"></script><script>
+      (function() {
+        function getTheme() {
+          if (localStorage.theme === 'dark') return 'dark';
+          if (localStorage.theme === 'light') return 'light';
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+          var root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.dataset.theme = theme;
+        }
+
+        applyTheme(getTheme());
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          if (!('theme' in localStorage)) {
+            applyTheme(getTheme());
+          }
+        });
+
+        document.addEventListener('astro:after-swap', function() {
+          applyTheme(getTheme());
+        });
+
+        window.__applyTheme = applyTheme;
+        window.__getTheme = getTheme;
+      })();
+    </script><link rel="stylesheet" href="/_astro/BaseLayout.CVd9qkCz.css"><link rel="stylesheet" href="/_astro/Comment.V8H-_-FS.css"></head> <body class="min-h-screen flex flex-col"> <meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script> <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div id="nav-container" class="flex items-center justify-between h-16 transition-all duration-500"> <a href="/" class="flex items-center gap-2 shrink-0"> <span class="text-xl font-bold text-primary hover:opacity-80 transition-opacity"> Sify Blog </span> </a> <nav class="hidden md:flex items-center gap-1" aria-label="主导航"> <a href="/" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="首页" data-en="Home">首页</span> </a><a href="/weekly" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="周刊" data-en="Weekly">周刊</span> </a><div class="relative group"> <span class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary group-hover:bg-primary/5 transition-colors cursor-pointer flex items-center gap-1"> <span class="nav-text" data-zh="文章" data-en="Archives">文章</span> <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path> </svg> </span> <div class="absolute top-full left-0 mt-1 w-36 py-2 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"> <a href="/categories" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="分类" data-en="Categories">分类</span> </a> <a href="/tags" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="标签" data-en="Tags">标签</span> </a> <a href="/archives" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="归档" data-en="Archives">归档</span> </a> </div> </div><a href="/friends" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="友链" data-en="Friends">友链</span> </a><a href="/about" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="关于" data-en="About">关于</span> </a> </nav> <div class="flex items-center gap-2"> <button id="search-trigger" class="flex items-center gap-1.5 p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="搜索"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <kbd class="hidden sm:inline-flex items-center text-[10px] font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">⌘K</kbd> </button> <button id="lang-toggle" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium" aria-label="切换语言"> <span class="lang-zh">中</span> <span class="lang-en hidden">EN</span> </button> <script>
+  (function() {
+    function init() {
+      var btn = document.getElementById('lang-toggle');
+      if (!btn) return;
+
+      function updateLabel() {
+        var locale = localStorage.getItem('locale') || 'zh';
+        var zhLabel = btn.querySelector('.lang-zh');
+        var enLabel = btn.querySelector('.lang-en');
+        if (locale === 'en') {
+          zhLabel?.classList.add('hidden');
+          enLabel?.classList.remove('hidden');
+        } else {
+          zhLabel?.classList.remove('hidden');
+          enLabel?.classList.add('hidden');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        var current = localStorage.getItem('locale') || 'zh';
+        var next = current === 'zh' ? 'en' : 'zh';
+        localStorage.setItem('locale', next);
+        updateLabel();
+        window.location.reload();
+      });
+
+      updateLabel();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <button id="theme-toggle" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="切换主题"> <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="菜单"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="hidden md:hidden pb-4"> <nav class="flex flex-col gap-0.5"> <div> <a href="/" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="首页" data-en="Home">首页</span> </a>  </div><div> <a href="/weekly" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="周刊" data-en="Weekly">周刊</span> </a>  </div><div> <a class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] cursor-pointer"> <span class="nav-text" data-zh="文章" data-en="Archives">文章</span> </a> <div class="ml-4 space-y-0"> <a href="/categories" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="分类" data-en="Categories">分类</span> </a> <a href="/tags" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="标签" data-en="Tags">标签</span> </a> <a href="/archives" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="归档" data-en="Archives">归档</span> </a> </div> </div><div> <a href="/friends" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="友链" data-en="Friends">友链</span> </a>  </div><div> <a href="/about" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="关于" data-en="About">关于</span> </a>  </div> </nav> </div> </div> </header> <div id="search-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true"> <div id="search-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div> <div class="absolute top-[10%] sm:top-[15%] left-1/2 -translate-x-1/2 w-full max-w-xl max-h-[80vh] flex flex-col"> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-2xl overflow-hidden mx-4"> <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100 dark:border-gray-700"> <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <input id="search-input" type="text" placeholder="搜索文章..." class="flex-1 bg-transparent border-none outline-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400" autocomplete="off"> <button id="search-close" class="flex items-center justify-center w-11 h-11 -mr-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="关闭搜索"> <kbd class="text-[10px] font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded mr-1">esc</kbd> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div id="search-results" class="max-h-80 overflow-y-auto p-2"> <div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div> </div> </div> </div> </div> <script type="module">let c=null;async function v(){if(!c)try{c=await(await fetch("/search-index.json")).json();const t=document.getElementById("search-input");t?.value&&y(t.value)}catch{c=[]}}function u(){const e=document.getElementById("search-modal");e&&(e.classList.remove("hidden"),e.setAttribute("aria-hidden","false"),document.body.style.overflow="hidden",setTimeout(()=>{document.getElementById("search-input")?.focus()},100),v())}function d(){const e=document.getElementById("search-modal");if(!e)return;e.classList.add("hidden"),e.setAttribute("aria-hidden","true"),document.body.style.overflow="";const t=document.getElementById("search-input");t&&(t.value="");const r=document.getElementById("search-results");r&&(r.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div>')}function y(e){const t=document.getElementById("search-results");if(!t)return;if(!c){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">加载中...</div>';return}if(!e.trim()){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div>';return}const o=e.toLowerCase().trim().split(/\s+/),i=c.filter(n=>{const s=[n.title,n.description,n.category,n.body,...n.tags||[]].join(" ").toLowerCase();return o.every(l=>s.includes(l))}).slice(0,20);if(i.length===0){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">没有找到结果</div>';return}const a=new RegExp(`(${o.map(n=>k(n)).join("|")})`,"gi");t.innerHTML=i.map(n=>{const s=f(n,o);return`
+      <a href="${n.type==="weekly"?"/weekly/":"/post/"}${n.slug}" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors line-clamp-1">${p(n.title,a)}</div>
+          ${s?`<div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 line-clamp-2">${p(s,a)}</div>`:""}
+          <div class="flex items-center gap-2 mt-0.5">
+            ${n.category?`<span class="text-xs text-primary/70">${x(n.category)}</span>`:""}
+            ${n.category?'<span class="w-px h-2.5 bg-gray-300 dark:bg-gray-600"></span>':""}
+            <span class="text-xs text-gray-400 dark:text-gray-500">${n.type==="weekly"?"周刊":"博客"}</span>
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 dark:text-gray-600 shrink-0 mt-1 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+    `}).join("")}function f(e,t){const r=e.body||e.description||"";if(!r)return"";const o=r.toLowerCase();for(const i of t){const a=o.indexOf(i);if(a!==-1){const n=Math.max(0,a-20),s=Math.min(r.length,a+i.length+40),l=r.slice(n,s);return(n>0?"...":"")+l+(s<r.length?"...":"")}}return""}function p(e,t){return x(e).replace(t,'<mark class="bg-primary/20 text-primary rounded-sm px-0.5">$1</mark>')}function k(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function x(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function m(e){y(e.target.value)}function g(e){(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),document.getElementById("search-modal")?.classList.contains("hidden")?u():d()),e.key==="Escape"&&d()}function h(){document.removeEventListener("keydown",g),document.addEventListener("keydown",g);const e=document.getElementById("search-input");e&&(e.removeEventListener("input",m),e.addEventListener("input",m));const t=document.getElementById("search-trigger");t&&(t.removeEventListener("click",u),t.addEventListener("click",u)),document.getElementById("search-close")?.addEventListener("click",d),document.getElementById("search-backdrop")?.addEventListener("click",d)}h();document.addEventListener("astro:after-swap",h);</script> <script>
+  (function() {
+    var header = document.getElementById('site-header');
+    var container = document.getElementById('nav-container');
+    if (!header || !container) return;
+
+    var SCROLL_THRESHOLD = 100;
+    var isPill = false;
+
+    function updateNav() {
+      var scrollY = window.scrollY;
+      var shouldBePill = scrollY > SCROLL_THRESHOLD;
+
+      if (shouldBePill !== isPill) {
+        isPill = shouldBePill;
+        if (isPill) {
+          header.classList.add('backdrop-blur-md', 'bg-white/80', 'dark:bg-[var(--color-bg-dark)]/80', 'border-b', 'border-gray-200/50', 'dark:border-gray-700/50');
+          header.style.top = '0';
+          header.style.left = '0';
+          header.style.right = '0';
+          header.style.width = '100%';
+          header.style.borderRadius = '0';
+          container.style.maxWidth = '80rem';
+        } else {
+          header.classList.remove('backdrop-blur-md', 'bg-white/80', 'dark:bg-[var(--color-bg-dark)]/80', 'border-b', 'border-gray-200/50', 'dark:border-gray-700/50');
+          header.style.top = '0';
+          header.style.left = '0';
+          header.style.right = '0';
+          header.style.width = '100%';
+          header.style.borderRadius = '0';
+          container.style.maxWidth = '80rem';
+        }
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    updateNav();
+  })();
+</script> <script>
+  function handleThemeToggle(e) {
+    var root = document.documentElement;
+    var isDark = root.classList.contains('dark');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (isDark) {
+        root.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        root.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+      return;
+    }
+
+    var btn = e.currentTarget;
+    var rect = btn.getBoundingClientRect();
+    var x = rect.left + rect.width / 2;
+    var y = rect.top + rect.height / 2;
+    var maxRadius = Math.sqrt(
+      Math.pow(Math.max(x, window.innerWidth - x), 2) +
+      Math.pow(Math.max(y, window.innerHeight - y), 2)
+    ) * 1.2;
+
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9998;pointer-events:none;' +
+      'clip-path:circle(0px at ' + x + 'px ' + y + 'px);' +
+      'background:' + (isDark ? '#1a1a2e' : '#f5f5f5') + ';';
+    document.body.appendChild(overlay);
+
+    root.classList.add('theme-transitioning');
+
+    requestAnimationFrame(function() {
+      overlay.style.transition = 'clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      overlay.style.clipPath = 'circle(' + maxRadius + 'px at ' + x + 'px ' + y + 'px)';
+
+      setTimeout(function() {
+        if (isDark) {
+          root.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          root.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+      }, 280);
+
+      setTimeout(function() {
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.4s ease';
+      }, 600);
+
+      setTimeout(function() {
+        overlay.remove();
+        root.classList.remove('theme-transitioning');
+      }, 1000);
+    });
+  }
+
+  function handleMobileMenu() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  }
+
+  function applyNavTranslations() {
+    var locale = localStorage.getItem('locale') || 'zh';
+    document.querySelectorAll('.nav-text').forEach(function(el) {
+      var text = el.getAttribute('data-' + locale);
+      if (text) el.textContent = text;
+    });
+  }
+
+  function bindHandlers() {
+    var themeBtn = document.getElementById('theme-toggle');
+    var mobileBtn = document.getElementById('mobile-menu-btn');
+
+    if (themeBtn) {
+      themeBtn.removeEventListener('click', handleThemeToggle);
+      themeBtn.addEventListener('click', handleThemeToggle);
+    }
+
+    if (mobileBtn) {
+      mobileBtn.removeEventListener('click', handleMobileMenu);
+      mobileBtn.addEventListener('click', handleMobileMenu);
+    }
+
+    applyNavTranslations();
+  }
+
+  bindHandlers();
+
+  document.addEventListener('astro:after-swap', function() {
+    bindHandlers();
+  });
+</script> <main class="flex-1">  <div id="reading-progress" class="fixed top-0 left-0 w-full h-1 z-[60] bg-transparent pointer-events-none"> <div id="reading-progress-bar" class="h-full bg-primary transition-[width] duration-100 ease-out" style="width: 0%"></div> </div> <script>
+  (function() {
+    function init() {
+      var bar = document.getElementById('reading-progress-bar');
+      if (!bar) return;
+
+      function updateProgress() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(progress, 100) + '%';
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <section class="relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] flex items-end" data-hero>  <div class="absolute inset-0" data-hero-parallax> <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200" alt="MDX 与数学公式" class="w-full h-full object-cover scale-110" loading="eager"> <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div> </div> <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-white w-full"> <div class="hero-reveal" data-hero-reveal> <a href="/categories/笔记" class="inline-block text-xs font-medium text-primary bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-4 hover:bg-white/20 transition-colors"> 笔记 </a> <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight leading-tight"> MDX 与数学公式 </h1> <p class="text-lg text-white/70 font-light mb-6 leading-relaxed max-w-2xl"> 演示 MDX 组件嵌入、KaTeX 数学公式渲染和外链卡片功能。 </p> <div class="flex flex-wrap items-center gap-4 text-sm text-white/50"> <time datetime="2026-06-10">2026-06-10</time> <div class="flex items-center gap-2"> <a href="/tags/MDX" class="hover:text-primary transition-colors">
+#MDX </a><a href="/tags/教程" class="hover:text-primary transition-colors">
+#教程 </a> </div> </div> </div> </div>  </section> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div class="flex flex-col lg:flex-row gap-8 py-8"> <div class="flex-1 min-w-0 order-1"> <article class="prose max-w-none"> <h2 id="mdx-是什么">MDX 是什么</h2>
+<p>MDX 让你在 Markdown 中直接使用 JSX 组件。本主题完全支持 <code>.mdx</code> 格式的文章。</p>
+<h3 id="外链卡片">外链卡片</h3>
+
+<a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="card-hover my-4 flex items-start gap-4 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 no-underline group"> <img src="https://www.google.com/s2/favicons?domain=astro.build&amp;sz=32" alt="astro.build" class="w-10 h-10 rounded-lg object-cover shrink-0 mt-0.5" loading="lazy" width="40" height="40" onerror="this.style.display='none'"> <div class="flex-1 min-w-0"> <span class="block text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors"> Astro 官方文档 </span> <span class="block text-xs text-gray-400 dark:text-gray-500 mt-1 line-clamp-2"> Astro 是适合内容型网站的全能 web 框架，支持多种 UI 框架和 Islands 架构。 </span> <span class="inline-flex items-center gap-1 mt-1.5 text-xs text-gray-400 dark:text-gray-500"> <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path> </svg> astro.build </span> </div> <svg class="w-5 h-5 text-gray-300 dark:text-gray-600 shrink-0 mt-2 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path> </svg> </a>
+<a href="https://katex.org" target="_blank" rel="noopener noreferrer" class="card-hover my-4 flex items-start gap-4 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 no-underline group"> <img src="https://www.google.com/s2/favicons?domain=katex.org&amp;sz=32" alt="katex.org" class="w-10 h-10 rounded-lg object-cover shrink-0 mt-0.5" loading="lazy" width="40" height="40" onerror="this.style.display='none'"> <div class="flex-1 min-w-0"> <span class="block text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors"> KaTeX — 最快的数学排版库 </span> <span class="block text-xs text-gray-400 dark:text-gray-500 mt-1 line-clamp-2"> 为 Web 设计的快速、易用数学排版库，完整支持 LaTeX 语法。 </span> <span class="inline-flex items-center gap-1 mt-1.5 text-xs text-gray-400 dark:text-gray-500"> <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path> </svg> katex.org </span> </div> <svg class="w-5 h-5 text-gray-300 dark:text-gray-600 shrink-0 mt-2 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path> </svg> </a>
+<h3 id="自定义组件">自定义组件</h3>
+<p>在 <code>src/components/</code> 下创建 <code>.astro</code> 组件，然后在 MDX 文件中 <code>import</code> 并使用：</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">import</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> MyComponent </span><span style="color:#D73A49;--shiki-dark:#F97583">from</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#39;../components/MyComponent.astro&#39;</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="color:#005CC5;--shiki-dark:#79B8FF">MyComponent</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> prop</span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#032F62;--shiki-dark:#9ECBFF">&quot;value&quot;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> /&gt;</span></span></code></pre>
+<p>这种方式让文章内容具备无限扩展能力。</p>
+<h2 id="数学公式">数学公式</h2>
+<p>本主题使用 <strong>KaTeX</strong> 渲染数学公式，支持行内和块级公式。行内公式用 <code>$...$</code>，块级公式用 <code>$$...$$</code>。</p>
+<h3 id="行内公式">行内公式</h3>
+<p>质能方程：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E = mc^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.0576em">E</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8141em"></span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></p>
+<p>二次公式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo>−</mo><mi>b</mi><mo>±</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.3845em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0395em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight">a</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">b</span><span class="mbin mtight">±</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9221em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord mtight" style="padding-left:0.833em"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463em"><span style="top:-2.786em;margin-right:0.0714em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">4</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span></span></span><span style="top:-2.8821em"><span class="pstrut" style="height:3em"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1179em"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h3 id="块级公式">块级公式</h3>
+<p>高斯积分：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></msubsup><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mtext> </mtext><mi>d</mi><mi>x</mi><mo>=</mo><msqrt><mi>π</mi></msqrt></mrow><annotation encoding="application/x-tex">\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.3846em;vertical-align:-0.9703em"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.4445em;position:relative;top:-0.0011em">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4143em"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.8129em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9703em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0369em"><span style="top:-3.113em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em"><span style="top:-2.931em;margin-right:0.0714em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1908em"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8492em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord mathnormal" style="margin-right:0.0359em">π</span></span></span><span style="top:-2.8092em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1908em"><span></span></span></span></span></span></span></span></span></span>
+<p>欧拉公式：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e^{i\pi} + 1 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.958em;vertical-align:-0.0833em"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em"><span style="top:-3.113em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em">iπ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">0</span></span></span></span></span>
+<h3 id="多行对齐">多行对齐</h3>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">∇</mi><mo>×</mo><mover accent="true"><mi>E</mi><mo>⃗</mo></mover></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mo>−</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mover accent="true"><mi>B</mi><mo>⃗</mo></mover></mrow><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">∇</mi><mo>×</mo><mover accent="true"><mi>B</mi><mo>⃗</mo></mover></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mover accent="true"><mi>J</mi><mo>⃗</mo></mover><mo>+</mo><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>ϵ</mi><mn>0</mn></msub><mfrac><mrow><mi mathvariant="normal">∂</mi><mover accent="true"><mi>E</mi><mo>⃗</mo></mover></mrow><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\nabla \times \vec{E} &amp;= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \times \vec{B} &amp;= \mu_0 \vec{J} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}
+\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.9587em;vertical-align:-2.2293em"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.7293em"><span style="top:-4.7293em"><span class="pstrut" style="height:3.6433em"></span><span class="mord"><span class="mord">∇</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663em"><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord mathnormal" style="margin-right:0.0576em">E</span></span><span style="top:-3.2523em"><span class="pstrut" style="height:3em"></span><span class="accent-body" style="left:-0.1522em"><span class="overlay" style="height:0.714em;width:0.471em"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span></span></span><span style="top:-2.1em"><span class="pstrut" style="height:3.6433em"></span><span class="mord"><span class="mord">∇</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663em"><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord mathnormal" style="margin-right:0.0502em">B</span></span><span style="top:-3.2523em"><span class="pstrut" style="height:3em"></span><span class="accent-body" style="left:-0.1522em"><span class="overlay" style="height:0.714em;width:0.471em"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.2293em"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.7293em"><span style="top:-4.7293em"><span class="pstrut" style="height:3.6433em"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6433em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord" style="margin-right:0.0556em">∂</span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord" style="margin-right:0.0556em">∂</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663em"><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord mathnormal" style="margin-right:0.0502em">B</span></span><span style="top:-3.2523em"><span class="pstrut" style="height:3em"></span><span class="accent-body" style="left:-0.1522em"><span class="overlay" style="height:0.714em;width:0.471em"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.1em"><span class="pstrut" style="height:3.6433em"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663em"><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord mathnormal" style="margin-right:0.0962em">J</span></span><span style="top:-3.2523em"><span class="pstrut" style="height:3em"></span><span class="accent-body" style="left:-0.0688em"><span class="overlay" style="height:0.714em;width:0.471em"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6433em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord" style="margin-right:0.0556em">∂</span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord" style="margin-right:0.0556em">∂</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663em"><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord mathnormal" style="margin-right:0.0576em">E</span></span><span style="top:-3.2523em"><span class="pstrut" style="height:3em"></span><span class="accent-body" style="left:-0.1522em"><span class="overlay" style="height:0.714em;width:0.471em"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.2293em"><span></span></span></span></span></span></span></span></span></span></span></span>
+<h3 id="矩阵">矩阵</h3>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo fence="true">(</mo><mtable rowspacing="0.16em" columnalign="center center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>11</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>12</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>13</mn></msub></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>21</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>22</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>23</mn></msub></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>31</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>32</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>a</mi><mn>33</mn></msub></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">A = \begin{pmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} \\
+a_{21} &amp; a_{22} &amp; a_{23} \\
+a_{31} &amp; a_{32} &amp; a_{33}
+\end{pmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:3.6em;vertical-align:-1.55em"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em"><span style="top:-4.05em"><span class="pstrut" style="height:5.6em"></span><span style="width:0.875em;height:3.6em"><svg xmlns="http://www.w3.org/2000/svg" width="0.875em" height="3.6em" viewBox="0 0 875 3600"><path d="M863,9c0,-2,-2,-5,-6,-9c0,0,-17,0,-17,0c-12.7,0,-19.3,0.3,-20,1
+c-5.3,5.3,-10.3,11,-15,17c-242.7,294.7,-395.3,682,-458,1162c-21.3,163.3,-33.3,349,
+-36,557 l0,84c0.2,6,0,26,0,60c2,159.3,10,310.7,24,454c53.3,528,210,
+949.7,470,1265c4.7,6,9.7,11.7,15,17c0.7,0.7,7,1,19,1c0,0,18,0,18,0c4,-4,6,-7,6,-9
+c0,-2.7,-3.3,-8.7,-10,-18c-135.3,-192.7,-235.5,-414.3,-300.5,-665c-65,-250.7,-102.5,
+-544.7,-112.5,-882c-2,-104,-3,-167,-3,-189
+l0,-92c0,-162.7,5.7,-314,17,-454c20.7,-272,63.7,-513,129,-723c65.3,
+-210,155.3,-396.3,270,-559c6.7,-9.3,10,-15.3,10,-18z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em"><span style="top:-4.21em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span><span style="top:-3.01em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">21</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span><span style="top:-1.81em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">31</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em"></span><span class="arraycolsep" style="width:0.5em"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em"><span style="top:-4.21em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span><span style="top:-3.01em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">22</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span><span style="top:-1.81em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em"></span><span class="arraycolsep" style="width:0.5em"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em"><span style="top:-4.21em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">13</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span><span style="top:-3.01em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">23</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span><span style="top:-1.81em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">33</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em"><span style="top:-4.05em"><span class="pstrut" style="height:5.6em"></span><span style="width:0.875em;height:3.6em"><svg xmlns="http://www.w3.org/2000/svg" width="0.875em" height="3.6em" viewBox="0 0 875 3600"><path d="M76,0c-16.7,0,-25,3,-25,9c0,2,2,6.3,6,13c21.3,28.7,42.3,60.3,
+63,95c96.7,156.7,172.8,332.5,228.5,527.5c55.7,195,92.8,416.5,111.5,664.5
+c11.3,139.3,17,290.7,17,454c0,28,1.7,43,3.3,45l0,9
+c-3,4,-3.3,16.7,-3.3,38c0,162,-5.7,313.7,-17,455c-18.7,248,-55.8,469.3,-111.5,664
+c-55.7,194.7,-131.8,370.3,-228.5,527c-20.7,34.7,-41.7,66.3,-63,95c-2,3.3,-4,7,-6,11
+c0,7.3,5.7,11,17,11c0,0,11,0,11,0c9.3,0,14.3,-0.3,15,-1c5.3,-5.3,10.3,-11,15,-17
+c242.7,-294.7,395.3,-681.7,458,-1161c21.3,-164.7,33.3,-350.7,36,-558
+l0,-144c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
+-470,-1265c-4.7,-6,-9.7,-11.7,-15,-17c-0.7,-0.7,-6.7,-1,-18,-1z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em"><span></span></span></span></span></span></span></span></span></span></span></span>
+<h3 id="组合数与概率">组合数与概率</h3>
+<p>二项式系数：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>n</mi><mi>k</mi></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">!</mo></mrow><mrow><mi>k</mi><mo stretchy="false">!</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mi>k</mi><mo stretchy="false">)</mo><mo stretchy="false">!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\binom{n}{k} = \frac{n!}{k!(n-k)!}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em"></span><span class="mord"><span class="mopen delimcenter" style="top:0em"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em"><span style="top:-2.355em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em">k</span></span></span></span><span style="top:-3.144em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.4001em;vertical-align:-0.52em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em">k</span><span class="mclose mtight">!</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.0315em">k</span><span class="mclose mtight">)!</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mclose mtight">!</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>贝叶斯定理：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mi mathvariant="normal">∣</mi><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal" style="margin-right:0.1389em">P</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0502em">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0502em">B</span><span class="mclose">)</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0502em">B</span><span class="mord">∣</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord mathnormal" style="margin-right:0.1389em">P</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<h3 id="求和与求积">求和与求积</h3>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>i</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{n} i = \frac{n(n+1)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em"><span style="top:-1.8723em;margin-left:0em"><span class="pstrut" style="height:3.05em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em"><span class="pstrut" style="height:3.05em"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em"><span class="pstrut" style="height:3.05em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>x</mi><mn>2</mn></msub><mo>⋅</mo><mo>…</mo><mo>⋅</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\prod_{i=1}^{n} x_i = x_1 \cdot x_2 \cdot \ldots \cdot x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em"><span style="top:-1.8723em;margin-left:0em"><span class="pstrut" style="height:3.05em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em"><span class="pstrut" style="height:3.05em"></span><span><span class="mop op-symbol large-op">∏</span></span></span><span style="top:-4.3em;margin-left:0em"><span class="pstrut" style="height:3.05em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.4445em"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span></span>
+<h3 id="极限">极限</h3>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mi>x</mi></mrow><mi>x</mi></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} \frac{\sin x}{x} = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.062em;vertical-align:-0.7171em"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em"><span style="top:-2.3829em;margin-left:0em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7171em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3449em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">1</span></span></span></span></span>
+<h3 id="导数">导数</h3>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>f</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">f&#39;(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em"><span style="top:-3.113em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:2.1791em;vertical-align:-0.7521em"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em"><span style="top:-2.3479em;margin-left:0em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">h</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span><span style="top:-3em"><span class="pstrut" style="height:3em"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7521em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">h</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord mathnormal" style="margin-right:0.1076em">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>  </article> <div class="mt-8"> <div class="flex items-center gap-2"> <span class="text-sm text-gray-400 dark:text-gray-500">分享</span> <a href="https://twitter.com/intent/tweet?text=MDX%20%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F&amp;url=https%3A%2F%2Fchuaipp.github.io%2Fpost%2Fmdx-demo%2F" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-[#1DA1F2] hover:bg-[#1DA1F2]/10 transition-colors" aria-label="分享到 Twitter"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path> </svg> </a> <button id="share-wechat" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-green-500 hover:bg-green-500/10 transition-colors relative" aria-label="分享到微信" data-url="https://chuaipp.github.io/post/mdx-demo/" data-title="MDX 与数学公式"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05a6.329 6.329 0 0 1-.256-1.787c0-3.614 3.342-6.555 7.465-6.555.26 0 .512.022.77.05C16.836 4.99 13.122 2.188 8.691 2.188zM5.785 7.05a1.128 1.128 0 1 1 0-2.256 1.128 1.128 0 0 1 0 2.256zm5.812 0a1.128 1.128 0 1 1 0-2.256 1.128 1.128 0 0 1 0 2.256zm3.27 3.296c-3.578 0-6.481 2.535-6.481 5.663 0 3.128 2.903 5.663 6.481 5.663a7.823 7.823 0 0 0 2.193-.314.672.672 0 0 1 .556.076l1.478.865a.253.253 0 0 0 .13.042.228.228 0 0 0 .226-.228c0-.056-.023-.11-.038-.165l-.304-1.15a.457.457 0 0 1 .165-.516c1.426-1.05 2.34-2.593 2.34-4.298 0-3.128-2.903-5.663-6.481-5.663h-.487zm-2.508 3.033a.878.878 0 1 1 0-1.757.878.878 0 0 1 0 1.757zm5.017 0a.878.878 0 1 1 0-1.757.878.878 0 0 1 0 1.757z"></path> </svg> <div id="wechat-qrcode" class="hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-3 bg-white rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-50"> <div class="text-xs text-gray-500 mb-2 text-center">用微信扫码分享</div> <img id="wechat-qrcode-img" class="w-32 h-32" alt="微信分享二维码"> </div> </button> <button id="share-copy-link" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-primary hover:bg-primary/10 transition-colors" aria-label="复制链接" data-url="https://chuaipp.github.io/post/mdx-demo/"> <svg class="w-5 h-5 share-copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path> </svg> <svg class="w-5 h-5 share-check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path> </svg> </button> <button id="share-native" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-primary hover:bg-primary/10 transition-colors hidden" aria-label="分享"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path> </svg> </button> </div> <script>
+  (function() {
+    function init() {
+      var qrcodeImg = document.getElementById('wechat-qrcode-img');
+      if (qrcodeImg) {
+        var wechatBtn = document.getElementById('share-wechat');
+        var wechatQrcode = document.getElementById('wechat-qrcode');
+        var shareUrl = wechatBtn?.getAttribute('data-url') || window.location.href;
+        qrcodeImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=' + encodeURIComponent(shareUrl);
+
+        var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (isTouchDevice) {
+          wechatBtn?.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var isOpen = !wechatQrcode?.classList.contains('hidden');
+            wechatQrcode?.classList.toggle('hidden', isOpen);
+          });
+        } else {
+          wechatBtn?.addEventListener('mouseenter', function() {
+            wechatQrcode?.classList.remove('hidden');
+          });
+          wechatBtn?.addEventListener('mouseleave', function() {
+            wechatQrcode?.classList.add('hidden');
+          });
+        }
+      }
+
+      var copyBtn = document.getElementById('share-copy-link');
+      copyBtn?.addEventListener('click', function() {
+        var url = this.getAttribute('data-url') || window.location.href;
+        navigator.clipboard.writeText(url).then(function() {
+          var copyIcon = copyBtn.querySelector('.share-copy-icon');
+          var checkIcon = copyBtn.querySelector('.share-check-icon');
+          copyIcon?.classList.add('hidden');
+          checkIcon?.classList.remove('hidden');
+          setTimeout(function() {
+            copyIcon?.classList.remove('hidden');
+            checkIcon?.classList.add('hidden');
+          }, 2000);
+        });
+      });
+
+      var nativeBtn = document.getElementById('share-native');
+      if (nativeBtn && navigator.share) {
+        nativeBtn.classList.remove('hidden');
+        nativeBtn.addEventListener('click', function() {
+          var title = this.getAttribute('data-title') || document.title;
+          navigator.share({ title: title, url: window.location.href });
+        });
+      }
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> </div> <div class="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800"> <div id="waline" class="not-prose" data-astro-cid-y3qunytq>
+Comment seems stuck. Try to refresh?
+</div> <script type="module" src="/_astro/Comment.astro_astro_type_script_index_0_lang.BrS0T7Vq.js"></script> </div> </div> <aside class="w-full lg:w-60 shrink-0 order-2"> <div class="sticky top-24 space-y-4"> <nav class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 hidden lg:block"><h2 class="text-sm font-semibold mb-3 text-gray-900 dark:text-gray-100">
+目录
+</h2><ul class="space-y-0.5"><li><a href="#mdx-是什么" id="toc-mdx-是什么" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">MDX 是什么</a></li><li><a href="#外链卡片" id="toc-外链卡片" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">外链卡片</a></li><li><a href="#自定义组件" id="toc-自定义组件" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">自定义组件</a></li><li><a href="#数学公式" id="toc-数学公式" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">数学公式</a></li><li><a href="#行内公式" id="toc-行内公式" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">行内公式</a></li><li><a href="#块级公式" id="toc-块级公式" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">块级公式</a></li><li><a href="#多行对齐" id="toc-多行对齐" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">多行对齐</a></li><li><a href="#矩阵" id="toc-矩阵" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">矩阵</a></li><li><a href="#组合数与概率" id="toc-组合数与概率" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">组合数与概率</a></li><li><a href="#求和与求积" id="toc-求和与求积" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">求和与求积</a></li><li><a href="#极限" id="toc-极限" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">极限</a></li><li><a href="#导数" id="toc-导数" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">导数</a></li></ul></nav><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        if (!id) return;
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>  </div> </aside>  </div> </div>  <button id="mobile-toc-trigger" class="lg:hidden fixed bottom-20 left-4 z-40 flex items-center gap-1.5 px-3 py-2.5 bg-white dark:bg-[var(--color-card-dark)] text-primary rounded-full shadow-lg border border-gray-100 dark:border-gray-700 text-sm font-medium transition-all hover:shadow-xl" aria-label="打开目录"> <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path> </svg>
+目录
+</button> <div id="mobile-toc-drawer" class="lg:hidden fixed inset-0 z-50 pointer-events-none" aria-hidden="true" inert> <div id="mobile-toc-backdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div> <div id="mobile-toc-panel" class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white dark:bg-[var(--color-bg-dark)] rounded-t-2xl shadow-2xl transform translate-y-full transition-transform duration-300 overflow-hidden flex flex-col"> <div class="flex items-center justify-between px-5 py-3 border-b border-gray-100 dark:border-gray-700 shrink-0"> <h2 class="text-sm font-semibold text-gray-900 dark:text-gray-100">目录</h2> <button id="mobile-toc-close" class="p-2 -mr-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="关闭目录"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div class="overflow-y-auto flex-1 p-4"> <nav class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5"><ul class="space-y-0.5"><li><a href="#mdx-是什么" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">MDX 是什么</a></li><li><a href="#外链卡片" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">外链卡片</a></li><li><a href="#自定义组件" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">自定义组件</a></li><li><a href="#数学公式" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">数学公式</a></li><li><a href="#行内公式" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">行内公式</a></li><li><a href="#块级公式" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">块级公式</a></li><li><a href="#多行对齐" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">多行对齐</a></li><li><a href="#矩阵" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">矩阵</a></li><li><a href="#组合数与概率" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">组合数与概率</a></li><li><a href="#求和与求积" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">求和与求积</a></li><li><a href="#极限" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">极限</a></li><li><a href="#导数" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">导数</a></li></ul></nav><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        if (!id) return;
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> </div> </div> </div>  </main> <footer class="border-t border-gray-200/50 dark:border-gray-700/50 mt-16 overflow-hidden" data-astro-cid-sz7xmlte> <div class="marquee-track py-4 border-b border-gray-200/30 dark:border-gray-700/30" data-astro-cid-sz7xmlte> <div class="marquee-content" data-astro-cid-sz7xmlte> <a href="/" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 首页 </a><a href="/weekly" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 周刊 </a><a href="/archives" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 文章 </a><a href="/friends" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 友链 </a><a href="/about" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 关于 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 4k 字 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 6 篇文章 </a><a href="https://astro.build" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Astro </a><a href="https://tailwindcss.com" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Tailwind CSS </a><a href="/" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 首页 </a><a href="/weekly" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 周刊 </a><a href="/archives" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 文章 </a><a href="/friends" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 友链 </a><a href="/about" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 关于 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 4k 字 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 6 篇文章 </a><a href="https://astro.build" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Astro </a><a href="https://tailwindcss.com" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Tailwind CSS </a> </div> </div> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" data-astro-cid-sz7xmlte> <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte> <a href="/" class="text-lg font-bold text-primary hover:opacity-80 transition-opacity" data-astro-cid-sz7xmlte> Sify Blog </a> <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 leading-relaxed" data-astro-cid-sz7xmlte> 一个基于 Astro 的现代化博客主题 </p> <div class="flex items-center gap-3 mt-4" data-astro-cid-sz7xmlte> <span class="text-xs text-gray-400 dark:text-gray-500" data-astro-cid-sz7xmlte> 6 篇文章 · 4k 字
+</span> </div> </div> <div data-astro-cid-sz7xmlte> <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4" data-astro-cid-sz7xmlte>导航</h3> <ul class="space-y-2.5" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte> <a href="/" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 首页 </a> </li><li data-astro-cid-sz7xmlte> <a href="/weekly" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 周刊 </a> </li><li data-astro-cid-sz7xmlte> <a href="/archives" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 文章 </a> </li><li data-astro-cid-sz7xmlte> <a href="/friends" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 友链 </a> </li><li data-astro-cid-sz7xmlte> <a href="/about" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 关于 </a> </li> </ul> </div> <div data-astro-cid-sz7xmlte> <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4" data-astro-cid-sz7xmlte>社交</h3> <ul class="space-y-2.5" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte> <a href="https://github.com/santisify" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> GitHub </a> </li><li data-astro-cid-sz7xmlte> <a href="/rss.xml" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> RSS </a> </li> <li data-astro-cid-sz7xmlte> <a href="/rss.xml" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte>
+RSS
+</a> </li> </ul> </div> </div> <div class="border-t border-gray-200/50 dark:border-gray-700/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400 dark:text-gray-500" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>&copy; 2026 santisify</span> <span data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" class="text-primary hover:underline" data-astro-cid-sz7xmlte>Astro</a> & <a href="https://tailwindcss.com/" class="text-cyan-500 hover:underline" data-astro-cid-sz7xmlte>Tailwind CSS</a> </span> </div> </div> </footer>  <script type="module" src="/_astro/Footer.astro_astro_type_script_index_0_lang.dEfjkTPS.js"></script> <button id="back-to-top" class="fixed bottom-8 right-8 lg:bottom-8 lg:right-8 bottom-20 right-6 z-50 p-3 rounded-full bg-primary text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90" aria-label="返回顶部"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg> </button> <script>
+  (function() {
+    function init() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+
+      function toggleButton() {
+        var show = window.scrollY > 300;
+        btn.classList.toggle('opacity-0', !show);
+        btn.classList.toggle('invisible', !show);
+      }
+
+      window.addEventListener('scroll', toggleButton);
+
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      toggleButton();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <script>
+  (function() {
+    function init() {
+      if (typeof mermaid === 'undefined') return;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+        securityLevel: 'loose',
+      });
+
+      var mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+      if (mermaidBlocks.length === 0) return;
+
+      mermaidBlocks.forEach(function(pre, index) {
+        var code = pre.querySelector('code');
+        var text = '';
+        if (code) {
+          var lines = code.querySelectorAll('.line');
+          if (lines.length > 0) {
+            text = Array.from(lines).map(function(line) {
+              return line.textContent || '';
+            }).join('\n');
+          } else {
+            text = code.textContent || '';
+          }
+        }
+
+        var container = document.createElement('div');
+        container.className = 'mermaid-container my-6 p-4 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-x-auto';
+
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.id = 'mermaid-' + index;
+        div.textContent = text;
+        container.appendChild(div);
+
+        pre.parentNode?.insertBefore(container, pre);
+        pre.remove();
+      });
+
+      mermaid.run();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>  <div class="grain-overlay" aria-hidden="true"></div> <script type="module" src="/_astro/SmoothScroll.astro_astro_type_script_index_0_lang.CCpgMc0D.js"></script> <script type="module" src="/_astro/ScrollReveal.astro_astro_type_script_index_0_lang.CSLndJPs.js"></script> <script type="module">function s(){window.matchMedia("(prefers-reduced-motion: reduce)").matches||window.matchMedia("(hover: hover) and (pointer: fine)").matches&&document.querySelectorAll(".card-tilt").forEach(e=>{e.addEventListener("mousemove",n=>{const t=e.getBoundingClientRect(),i=n.clientX-t.left,a=n.clientY-t.top,o=t.width/2,r=t.height/2,c=(a-r)/r*-8,d=(i-o)/o*8;e.style.transform=`perspective(1100px) rotateX(${c}deg) rotateY(${d}deg) translateY(-4px) scale(1.01)`,e.style.boxShadow="0 20px 40px rgba(0,0,0,0.12)"}),e.addEventListener("mouseleave",()=>{e.style.transform="",e.style.boxShadow=""})})}s();document.addEventListener("astro:after-swap",()=>{setTimeout(s,100)});</script> <script type="module">function r(){document.querySelectorAll("pre").forEach(e=>{if(e.parentElement?.classList.contains("code-block-wrapper")||e.getAttribute("data-language")==="mermaid")return;const a=e.querySelector("code")?.className.match(/language-(\w+)/)?.[1]||e.getAttribute("data-language")||"",n=document.createElement("div");if(n.className="code-block-wrapper",a&&n.setAttribute("data-lang",a),e.parentNode?.insertBefore(n,e),n.appendChild(e),a){const o=document.createElement("span");o.className="code-lang-label",o.textContent=a,n.appendChild(o)}const t=document.createElement("button");t.className="copy-btn",t.title="复制代码",t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',t.addEventListener("click",async()=>{const o=e.querySelector("code")?.textContent||e.textContent||"";await navigator.clipboard.writeText(o),t.classList.add("copied"),t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',setTimeout(()=>{t.classList.remove("copied"),t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'},2e3)}),n.appendChild(t)})}r();document.addEventListener("astro:after-swap",r);</script> <script type="module">"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").catch(()=>{})});</script> </body> </html> <script>
+  (function() {
+    function init() {
+      var trigger = document.getElementById('mobile-toc-trigger');
+      var drawer = document.getElementById('mobile-toc-drawer');
+      var backdrop = document.getElementById('mobile-toc-backdrop');
+      var panel = document.getElementById('mobile-toc-panel');
+      var closeBtn = document.getElementById('mobile-toc-close');
+      if (!trigger || !drawer || !backdrop || !panel) return;
+
+      function openDrawer() {
+        drawer.removeAttribute('inert');
+        drawer.setAttribute('aria-hidden', 'false');
+        drawer.classList.remove('pointer-events-none');
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('translate-y-full');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('translate-y-full');
+        setTimeout(function() {
+          drawer.setAttribute('inert', '');
+          drawer.setAttribute('aria-hidden', 'true');
+          drawer.classList.add('pointer-events-none');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      trigger.addEventListener('click', openDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+          closeDrawer();
+        }
+      });
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <script type="module" src="/_astro/PostLayout.astro_astro_type_script_index_0_lang.BerODGyl.js"></script>

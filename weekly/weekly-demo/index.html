@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v6.4.8"><meta name="theme-color" content="#e9536a"><title>周刊 - Sify Blog</title><meta name="description" content="第一期周刊，包含 Astro 6.x 更新、Tailwind CSS v4 实践、Bun 生态进展等前端技术动态。"><meta name="author" content="santisify"><meta name="robots" content="index, follow"><link rel="canonical" href="https://santisify.top/weekly/weekly-demo/"><meta property="og:site_name" content="Sify Blog"><meta property="og:title" content="周刊 - Sify Blog"><meta property="og:type" content="article"><meta property="og:description" content="第一期周刊，包含 Astro 6.x 更新、Tailwind CSS v4 实践、Bun 生态进展等前端技术动态。"><meta property="og:url" content="https://santisify.top/weekly/weekly-demo/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200"><meta property="og:image:alt" content="周刊 - Sify Blog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="周刊 - Sify Blog"><meta name="twitter:description" content="第一期周刊，包含 Astro 6.x 更新、Tailwind CSS v4 实践、Bun 生态进展等前端技术动态。"><meta name="twitter:image" content="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200"><meta property="article:author" content="santisify"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"周刊 - Sify Blog","description":"第一期周刊，包含 Astro 6.x 更新、Tailwind CSS v4 实践、Bun 生态进展等前端技术动态。","url":"https://santisify.top/weekly/weekly-demo/","author":{"@type":"Person","name":"santisify"},"publisher":{"@type":"Organization","name":"Sify Blog","logo":{"@type":"ImageObject","url":"https://santisify.top/favicon.svg"}},"image":"https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200"}</script><link rel="alternate" type="application/rss+xml" title="Sify Blog" href="/rss.xml"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#e9536a"><script src="/assets/js/mermaid.min.js"></script><script>
+      (function() {
+        function getTheme() {
+          if (localStorage.theme === 'dark') return 'dark';
+          if (localStorage.theme === 'light') return 'light';
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+          var root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.dataset.theme = theme;
+        }
+
+        applyTheme(getTheme());
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          if (!('theme' in localStorage)) {
+            applyTheme(getTheme());
+          }
+        });
+
+        document.addEventListener('astro:after-swap', function() {
+          applyTheme(getTheme());
+        });
+
+        window.__applyTheme = applyTheme;
+        window.__getTheme = getTheme;
+      })();
+    </script><link rel="stylesheet" href="/_astro/BaseLayout.CVd9qkCz.css"><link rel="stylesheet" href="/_astro/Comment.V8H-_-FS.css"></head> <body class="min-h-screen flex flex-col"> <meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script> <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div id="nav-container" class="flex items-center justify-between h-16 transition-all duration-500"> <a href="/" class="flex items-center gap-2 shrink-0"> <span class="text-xl font-bold text-primary hover:opacity-80 transition-opacity"> Sify Blog </span> </a> <nav class="hidden md:flex items-center gap-1" aria-label="主导航"> <a href="/" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="首页" data-en="Home">首页</span> </a><a href="/weekly" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="周刊" data-en="Weekly">周刊</span> </a><div class="relative group"> <span class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary group-hover:bg-primary/5 transition-colors cursor-pointer flex items-center gap-1"> <span class="nav-text" data-zh="文章" data-en="Archives">文章</span> <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path> </svg> </span> <div class="absolute top-full left-0 mt-1 w-36 py-2 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"> <a href="/categories" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="分类" data-en="Categories">分类</span> </a> <a href="/tags" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="标签" data-en="Tags">标签</span> </a> <a href="/archives" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="归档" data-en="Archives">归档</span> </a> </div> </div><a href="/friends" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="友链" data-en="Friends">友链</span> </a><a href="/about" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="关于" data-en="About">关于</span> </a> </nav> <div class="flex items-center gap-2"> <button id="search-trigger" class="flex items-center gap-1.5 p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="搜索"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <kbd class="hidden sm:inline-flex items-center text-[10px] font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">⌘K</kbd> </button> <button id="lang-toggle" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium" aria-label="切换语言"> <span class="lang-zh">中</span> <span class="lang-en hidden">EN</span> </button> <script>
+  (function() {
+    function init() {
+      var btn = document.getElementById('lang-toggle');
+      if (!btn) return;
+
+      function updateLabel() {
+        var locale = localStorage.getItem('locale') || 'zh';
+        var zhLabel = btn.querySelector('.lang-zh');
+        var enLabel = btn.querySelector('.lang-en');
+        if (locale === 'en') {
+          zhLabel?.classList.add('hidden');
+          enLabel?.classList.remove('hidden');
+        } else {
+          zhLabel?.classList.remove('hidden');
+          enLabel?.classList.add('hidden');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        var current = localStorage.getItem('locale') || 'zh';
+        var next = current === 'zh' ? 'en' : 'zh';
+        localStorage.setItem('locale', next);
+        updateLabel();
+        window.location.reload();
+      });
+
+      updateLabel();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <button id="theme-toggle" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="切换主题"> <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="菜单"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="hidden md:hidden pb-4"> <nav class="flex flex-col gap-0.5"> <div> <a href="/" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="首页" data-en="Home">首页</span> </a>  </div><div> <a href="/weekly" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="周刊" data-en="Weekly">周刊</span> </a>  </div><div> <a class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] cursor-pointer"> <span class="nav-text" data-zh="文章" data-en="Archives">文章</span> </a> <div class="ml-4 space-y-0"> <a href="/categories" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="分类" data-en="Categories">分类</span> </a> <a href="/tags" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="标签" data-en="Tags">标签</span> </a> <a href="/archives" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="归档" data-en="Archives">归档</span> </a> </div> </div><div> <a href="/friends" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="友链" data-en="Friends">友链</span> </a>  </div><div> <a href="/about" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="关于" data-en="About">关于</span> </a>  </div> </nav> </div> </div> </header> <div id="search-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true"> <div id="search-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div> <div class="absolute top-[10%] sm:top-[15%] left-1/2 -translate-x-1/2 w-full max-w-xl max-h-[80vh] flex flex-col"> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-2xl overflow-hidden mx-4"> <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100 dark:border-gray-700"> <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <input id="search-input" type="text" placeholder="搜索文章..." class="flex-1 bg-transparent border-none outline-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400" autocomplete="off"> <button id="search-close" class="flex items-center justify-center w-11 h-11 -mr-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="关闭搜索"> <kbd class="text-[10px] font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded mr-1">esc</kbd> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div id="search-results" class="max-h-80 overflow-y-auto p-2"> <div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div> </div> </div> </div> </div> <script type="module">let c=null;async function v(){if(!c)try{c=await(await fetch("/search-index.json")).json();const t=document.getElementById("search-input");t?.value&&y(t.value)}catch{c=[]}}function u(){const e=document.getElementById("search-modal");e&&(e.classList.remove("hidden"),e.setAttribute("aria-hidden","false"),document.body.style.overflow="hidden",setTimeout(()=>{document.getElementById("search-input")?.focus()},100),v())}function d(){const e=document.getElementById("search-modal");if(!e)return;e.classList.add("hidden"),e.setAttribute("aria-hidden","true"),document.body.style.overflow="";const t=document.getElementById("search-input");t&&(t.value="");const r=document.getElementById("search-results");r&&(r.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div>')}function y(e){const t=document.getElementById("search-results");if(!t)return;if(!c){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">加载中...</div>';return}if(!e.trim()){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div>';return}const o=e.toLowerCase().trim().split(/\s+/),i=c.filter(n=>{const s=[n.title,n.description,n.category,n.body,...n.tags||[]].join(" ").toLowerCase();return o.every(l=>s.includes(l))}).slice(0,20);if(i.length===0){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">没有找到结果</div>';return}const a=new RegExp(`(${o.map(n=>k(n)).join("|")})`,"gi");t.innerHTML=i.map(n=>{const s=f(n,o);return`
+      <a href="${n.type==="weekly"?"/weekly/":"/post/"}${n.slug}" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors line-clamp-1">${p(n.title,a)}</div>
+          ${s?`<div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 line-clamp-2">${p(s,a)}</div>`:""}
+          <div class="flex items-center gap-2 mt-0.5">
+            ${n.category?`<span class="text-xs text-primary/70">${x(n.category)}</span>`:""}
+            ${n.category?'<span class="w-px h-2.5 bg-gray-300 dark:bg-gray-600"></span>':""}
+            <span class="text-xs text-gray-400 dark:text-gray-500">${n.type==="weekly"?"周刊":"博客"}</span>
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 dark:text-gray-600 shrink-0 mt-1 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+    `}).join("")}function f(e,t){const r=e.body||e.description||"";if(!r)return"";const o=r.toLowerCase();for(const i of t){const a=o.indexOf(i);if(a!==-1){const n=Math.max(0,a-20),s=Math.min(r.length,a+i.length+40),l=r.slice(n,s);return(n>0?"...":"")+l+(s<r.length?"...":"")}}return""}function p(e,t){return x(e).replace(t,'<mark class="bg-primary/20 text-primary rounded-sm px-0.5">$1</mark>')}function k(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function x(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function m(e){y(e.target.value)}function g(e){(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),document.getElementById("search-modal")?.classList.contains("hidden")?u():d()),e.key==="Escape"&&d()}function h(){document.removeEventListener("keydown",g),document.addEventListener("keydown",g);const e=document.getElementById("search-input");e&&(e.removeEventListener("input",m),e.addEventListener("input",m));const t=document.getElementById("search-trigger");t&&(t.removeEventListener("click",u),t.addEventListener("click",u)),document.getElementById("search-close")?.addEventListener("click",d),document.getElementById("search-backdrop")?.addEventListener("click",d)}h();document.addEventListener("astro:after-swap",h);</script> <script>
+  (function() {
+    var header = document.getElementById('site-header');
+    var container = document.getElementById('nav-container');
+    if (!header || !container) return;
+
+    var SCROLL_THRESHOLD = 100;
+    var isPill = false;
+
+    function updateNav() {
+      var scrollY = window.scrollY;
+      var shouldBePill = scrollY > SCROLL_THRESHOLD;
+
+      if (shouldBePill !== isPill) {
+        isPill = shouldBePill;
+        if (isPill) {
+          header.classList.add('backdrop-blur-md', 'bg-white/80', 'dark:bg-[var(--color-bg-dark)]/80', 'border-b', 'border-gray-200/50', 'dark:border-gray-700/50');
+          header.style.top = '0';
+          header.style.left = '0';
+          header.style.right = '0';
+          header.style.width = '100%';
+          header.style.borderRadius = '0';
+          container.style.maxWidth = '80rem';
+        } else {
+          header.classList.remove('backdrop-blur-md', 'bg-white/80', 'dark:bg-[var(--color-bg-dark)]/80', 'border-b', 'border-gray-200/50', 'dark:border-gray-700/50');
+          header.style.top = '0';
+          header.style.left = '0';
+          header.style.right = '0';
+          header.style.width = '100%';
+          header.style.borderRadius = '0';
+          container.style.maxWidth = '80rem';
+        }
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    updateNav();
+  })();
+</script> <script>
+  function handleThemeToggle(e) {
+    var root = document.documentElement;
+    var isDark = root.classList.contains('dark');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (isDark) {
+        root.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        root.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+      return;
+    }
+
+    var btn = e.currentTarget;
+    var rect = btn.getBoundingClientRect();
+    var x = rect.left + rect.width / 2;
+    var y = rect.top + rect.height / 2;
+    var maxRadius = Math.sqrt(
+      Math.pow(Math.max(x, window.innerWidth - x), 2) +
+      Math.pow(Math.max(y, window.innerHeight - y), 2)
+    ) * 1.2;
+
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9998;pointer-events:none;' +
+      'clip-path:circle(0px at ' + x + 'px ' + y + 'px);' +
+      'background:' + (isDark ? '#1a1a2e' : '#f5f5f5') + ';';
+    document.body.appendChild(overlay);
+
+    root.classList.add('theme-transitioning');
+
+    requestAnimationFrame(function() {
+      overlay.style.transition = 'clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      overlay.style.clipPath = 'circle(' + maxRadius + 'px at ' + x + 'px ' + y + 'px)';
+
+      setTimeout(function() {
+        if (isDark) {
+          root.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          root.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+      }, 280);
+
+      setTimeout(function() {
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.4s ease';
+      }, 600);
+
+      setTimeout(function() {
+        overlay.remove();
+        root.classList.remove('theme-transitioning');
+      }, 1000);
+    });
+  }
+
+  function handleMobileMenu() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  }
+
+  function applyNavTranslations() {
+    var locale = localStorage.getItem('locale') || 'zh';
+    document.querySelectorAll('.nav-text').forEach(function(el) {
+      var text = el.getAttribute('data-' + locale);
+      if (text) el.textContent = text;
+    });
+  }
+
+  function bindHandlers() {
+    var themeBtn = document.getElementById('theme-toggle');
+    var mobileBtn = document.getElementById('mobile-menu-btn');
+
+    if (themeBtn) {
+      themeBtn.removeEventListener('click', handleThemeToggle);
+      themeBtn.addEventListener('click', handleThemeToggle);
+    }
+
+    if (mobileBtn) {
+      mobileBtn.removeEventListener('click', handleMobileMenu);
+      mobileBtn.addEventListener('click', handleMobileMenu);
+    }
+
+    applyNavTranslations();
+  }
+
+  bindHandlers();
+
+  document.addEventListener('astro:after-swap', function() {
+    bindHandlers();
+  });
+</script> <main class="flex-1">  <div id="reading-progress" class="fixed top-0 left-0 w-full h-1 z-[60] bg-transparent pointer-events-none"> <div id="reading-progress-bar" class="h-full bg-primary transition-[width] duration-100 ease-out" style="width: 0%"></div> </div> <script>
+  (function() {
+    function init() {
+      var bar = document.getElementById('reading-progress-bar');
+      if (!bar) return;
+
+      function updateProgress() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(progress, 100) + '%';
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <section class="relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] flex items-end" data-hero>  <div class="absolute inset-0" data-hero-parallax> <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200" alt="周刊" class="w-full h-full object-cover scale-110" loading="eager"> <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div> </div> <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-white w-full"> <div class="hero-reveal" data-hero-reveal>  <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight leading-tight"> 周刊 </h1> <p class="text-lg text-white/70 font-light mb-6 leading-relaxed max-w-2xl"> 第一期周刊，包含 Astro 6.x 更新、Tailwind CSS v4 实践、Bun 生态进展等前端技术动态。 </p> <div class="flex flex-wrap items-center gap-4 text-sm text-white/50">   </div> </div> </div>  </section> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div class="flex flex-col lg:flex-row gap-8 py-8"> <div class="flex-1 min-w-0 order-1"> <article class="prose max-w-none">  <header class="mb-8"> <span class="inline-block text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
+周刊 #1 </span> <h1 class="text-3xl font-bold mb-4">周刊</h1> <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 dark:text-gray-500"> <time datetime="2026-06-10"> 2026-06-10 </time> <span>283 字</span> <span>1 min read</span> </div> </header> <h2 id="本周推荐">本周推荐</h2>
+<h3 id="astro-6x-正式发布">Astro 6.x 正式发布</h3>
+<p>Astro 6 带来了全新的内容层 API 和更快的构建速度。</p>
+<ul>
+<li>新的 <code>content.config.ts</code> 替代 <code>content/config.ts</code></li>
+<li><code>unified()</code> 处理器统一 Markdown/MDX 插件配置</li>
+<li>构建速度提升约 30%</li>
+</ul>
+<h3 id="tailwind-css-v4">Tailwind CSS v4</h3>
+<p>Tailwind CSS v4 采用 CSS-first 配置方式，无需 <code>tailwind.config.js</code>：</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">@import</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 'tailwindcss'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">@theme</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  --color-primary: </span><span style="color:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">#e9536a;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+<h3 id="bun-13">Bun 1.3</h3>
+<p>Bun 1.3 改进了包管理器的稳定性和兼容性：</p>
+<ul>
+<li>更快的 <code>bun install</code></li>
+<li>改进的 Node.js 兼容层</li>
+<li>新增 <code>bun build</code> 优化</li>
+</ul>
+<h2 id="工具推荐">工具推荐</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>用途</th></tr></thead><tbody><tr><td><a href="https://waline.js.org">Waline</a></td><td>轻量评论系统</td></tr><tr><td><a href="https://katex.org">KaTeX</a></td><td>Web 数学公式渲染</td></tr><tr><td><a href="https://shiki.style">Shiki</a></td><td>代码语法高亮</td></tr></tbody></table>
+<h2 id="代码片段">代码片段</h2>
+<h3 id="react-自定义-hook">React 自定义 Hook</h3>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">function</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> useDebounce</span><span style="color:#24292E;--shiki-dark:#E1E4E8">&#x3C;</span><span style="color:#6F42C1;--shiki-dark:#B392F0">T</span><span style="color:#24292E;--shiki-dark:#E1E4E8">>(</span><span style="color:#E36209;--shiki-dark:#FFAB70">value</span><span style="color:#D73A49;--shiki-dark:#F97583">:</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> T</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">delay</span><span style="color:#D73A49;--shiki-dark:#F97583">:</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> number</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span><span style="color:#D73A49;--shiki-dark:#F97583">:</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> T</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  const</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> [</span><span style="color:#005CC5;--shiki-dark:#79B8FF">debouncedValue</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">setDebouncedValue</span><span style="color:#24292E;--shiki-dark:#E1E4E8">] </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> useState</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(value);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">  useEffect</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(() </span><span style="color:#D73A49;--shiki-dark:#F97583">=></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> timer</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> setTimeout</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(() </span><span style="color:#D73A49;--shiki-dark:#F97583">=></span><span style="color:#6F42C1;--shiki-dark:#B392F0"> setDebouncedValue</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(value), delay);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> () </span><span style="color:#D73A49;--shiki-dark:#F97583">=></span><span style="color:#6F42C1;--shiki-dark:#B392F0"> clearTimeout</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(timer);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  }, [value, delay]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> debouncedValue;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+<h3 id="css-grid-响应式布局">CSS Grid 响应式布局</h3>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">.grid-layout</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">  display</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">grid</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">  grid-template-columns</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">repeat</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#005CC5;--shiki-dark:#79B8FF">auto-fill</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">minmax</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#005CC5;--shiki-dark:#79B8FF">300</span><span style="color:#D73A49;--shiki-dark:#F97583">px</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">1</span><span style="color:#D73A49;--shiki-dark:#F97583">fr</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">  gap</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">1.5</span><span style="color:#D73A49;--shiki-dark:#F97583">rem</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+<h2 id="精选文章">精选文章</h2>
+<ul>
+<li><a href="https://docs.astro.build/en/guides/content-collections/">Content Collections in Astro 6</a></li>
+<li><a href="https://docs.astro.build/en/guides/integrations-guide/mdx/">MDX Guide</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries">CSS Container Queries</a></li>
+</ul>
+<h2 id="下期预告">下期预告</h2>
+<p>下期将介绍 TypeScript 5.5 新特性和 React 19 更新。敬请期待！</p>  </article> <div class="mt-8"> <div class="flex items-center gap-2"> <span class="text-sm text-gray-400 dark:text-gray-500">分享</span> <a href="https://twitter.com/intent/tweet?text=%E5%91%A8%E5%88%8A&amp;url=https%3A%2F%2Fchuaipp.github.io%2Fweekly%2Fweekly-demo%2F" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-[#1DA1F2] hover:bg-[#1DA1F2]/10 transition-colors" aria-label="分享到 Twitter"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path> </svg> </a> <button id="share-wechat" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-green-500 hover:bg-green-500/10 transition-colors relative" aria-label="分享到微信" data-url="https://chuaipp.github.io/weekly/weekly-demo/" data-title="周刊"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05a6.329 6.329 0 0 1-.256-1.787c0-3.614 3.342-6.555 7.465-6.555.26 0 .512.022.77.05C16.836 4.99 13.122 2.188 8.691 2.188zM5.785 7.05a1.128 1.128 0 1 1 0-2.256 1.128 1.128 0 0 1 0 2.256zm5.812 0a1.128 1.128 0 1 1 0-2.256 1.128 1.128 0 0 1 0 2.256zm3.27 3.296c-3.578 0-6.481 2.535-6.481 5.663 0 3.128 2.903 5.663 6.481 5.663a7.823 7.823 0 0 0 2.193-.314.672.672 0 0 1 .556.076l1.478.865a.253.253 0 0 0 .13.042.228.228 0 0 0 .226-.228c0-.056-.023-.11-.038-.165l-.304-1.15a.457.457 0 0 1 .165-.516c1.426-1.05 2.34-2.593 2.34-4.298 0-3.128-2.903-5.663-6.481-5.663h-.487zm-2.508 3.033a.878.878 0 1 1 0-1.757.878.878 0 0 1 0 1.757zm5.017 0a.878.878 0 1 1 0-1.757.878.878 0 0 1 0 1.757z"></path> </svg> <div id="wechat-qrcode" class="hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-3 bg-white rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-50"> <div class="text-xs text-gray-500 mb-2 text-center">用微信扫码分享</div> <img id="wechat-qrcode-img" class="w-32 h-32" alt="微信分享二维码"> </div> </button> <button id="share-copy-link" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-primary hover:bg-primary/10 transition-colors" aria-label="复制链接" data-url="https://chuaipp.github.io/weekly/weekly-demo/"> <svg class="w-5 h-5 share-copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path> </svg> <svg class="w-5 h-5 share-check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path> </svg> </button> <button id="share-native" class="flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 dark:text-gray-500 hover:text-primary hover:bg-primary/10 transition-colors hidden" aria-label="分享"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path> </svg> </button> </div> <script>
+  (function() {
+    function init() {
+      var qrcodeImg = document.getElementById('wechat-qrcode-img');
+      if (qrcodeImg) {
+        var wechatBtn = document.getElementById('share-wechat');
+        var wechatQrcode = document.getElementById('wechat-qrcode');
+        var shareUrl = wechatBtn?.getAttribute('data-url') || window.location.href;
+        qrcodeImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=' + encodeURIComponent(shareUrl);
+
+        var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (isTouchDevice) {
+          wechatBtn?.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var isOpen = !wechatQrcode?.classList.contains('hidden');
+            wechatQrcode?.classList.toggle('hidden', isOpen);
+          });
+        } else {
+          wechatBtn?.addEventListener('mouseenter', function() {
+            wechatQrcode?.classList.remove('hidden');
+          });
+          wechatBtn?.addEventListener('mouseleave', function() {
+            wechatQrcode?.classList.add('hidden');
+          });
+        }
+      }
+
+      var copyBtn = document.getElementById('share-copy-link');
+      copyBtn?.addEventListener('click', function() {
+        var url = this.getAttribute('data-url') || window.location.href;
+        navigator.clipboard.writeText(url).then(function() {
+          var copyIcon = copyBtn.querySelector('.share-copy-icon');
+          var checkIcon = copyBtn.querySelector('.share-check-icon');
+          copyIcon?.classList.add('hidden');
+          checkIcon?.classList.remove('hidden');
+          setTimeout(function() {
+            copyIcon?.classList.remove('hidden');
+            checkIcon?.classList.add('hidden');
+          }, 2000);
+        });
+      });
+
+      var nativeBtn = document.getElementById('share-native');
+      if (nativeBtn && navigator.share) {
+        nativeBtn.classList.remove('hidden');
+        nativeBtn.addEventListener('click', function() {
+          var title = this.getAttribute('data-title') || document.title;
+          navigator.share({ title: title, url: window.location.href });
+        });
+      }
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> </div> <div class="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800"> <div id="waline" class="not-prose" data-astro-cid-y3qunytq>
+Comment seems stuck. Try to refresh?
+</div> <script type="module" src="/_astro/Comment.astro_astro_type_script_index_0_lang.BrS0T7Vq.js"></script> </div> </div> <aside class="w-full lg:w-60 shrink-0 order-2"> <div class="sticky top-24 space-y-4"> <nav class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 hidden lg:block"><h2 class="text-sm font-semibold mb-3 text-gray-900 dark:text-gray-100">
+目录
+</h2><ul class="space-y-0.5"><li><a href="#本周推荐" id="toc-本周推荐" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">本周推荐</a></li><li><a href="#astro-6x-正式发布" id="toc-astro-6x-正式发布" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">Astro 6.x 正式发布</a></li><li><a href="#tailwind-css-v4" id="toc-tailwind-css-v4" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">Tailwind CSS v4</a></li><li><a href="#bun-13" id="toc-bun-13" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">Bun 1.3</a></li><li><a href="#工具推荐" id="toc-工具推荐" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">工具推荐</a></li><li><a href="#代码片段" id="toc-代码片段" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">代码片段</a></li><li><a href="#react-自定义-hook" id="toc-react-自定义-hook" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">React 自定义 Hook</a></li><li><a href="#css-grid-响应式布局" id="toc-css-grid-响应式布局" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2 pl-4">CSS Grid 响应式布局</a></li><li><a href="#精选文章" id="toc-精选文章" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">精选文章</a></li><li><a href="#下期预告" id="toc-下期预告" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-xs py-1.5 px-2">下期预告</a></li></ul></nav><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        if (!id) return;
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>  </div> </aside>  </div> </div>  <button id="mobile-toc-trigger" class="lg:hidden fixed bottom-20 left-4 z-40 flex items-center gap-1.5 px-3 py-2.5 bg-white dark:bg-[var(--color-card-dark)] text-primary rounded-full shadow-lg border border-gray-100 dark:border-gray-700 text-sm font-medium transition-all hover:shadow-xl" aria-label="打开目录"> <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path> </svg>
+目录
+</button> <div id="mobile-toc-drawer" class="lg:hidden fixed inset-0 z-50 pointer-events-none" aria-hidden="true" inert> <div id="mobile-toc-backdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div> <div id="mobile-toc-panel" class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white dark:bg-[var(--color-bg-dark)] rounded-t-2xl shadow-2xl transform translate-y-full transition-transform duration-300 overflow-hidden flex flex-col"> <div class="flex items-center justify-between px-5 py-3 border-b border-gray-100 dark:border-gray-700 shrink-0"> <h2 class="text-sm font-semibold text-gray-900 dark:text-gray-100">目录</h2> <button id="mobile-toc-close" class="p-2 -mr-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="关闭目录"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div class="overflow-y-auto flex-1 p-4"> <nav class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5"><ul class="space-y-0.5"><li><a href="#本周推荐" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">本周推荐</a></li><li><a href="#astro-6x-正式发布" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">Astro 6.x 正式发布</a></li><li><a href="#tailwind-css-v4" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">Tailwind CSS v4</a></li><li><a href="#bun-13" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">Bun 1.3</a></li><li><a href="#工具推荐" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">工具推荐</a></li><li><a href="#代码片段" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">代码片段</a></li><li><a href="#react-自定义-hook" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">React 自定义 Hook</a></li><li><a href="#css-grid-响应式布局" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center pl-7">CSS Grid 响应式布局</a></li><li><a href="#精选文章" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">精选文章</a></li><li><a href="#下期预告" class="toc-link block transition-colors hover:text-primary text-gray-500 dark:text-gray-400 rounded-lg text-sm py-2.5 px-3 min-h-[44px] flex items-center">下期预告</a></li></ul></nav><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        if (!id) return;
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script><script>
+  (function() {
+    function init() {
+      var links = document.querySelectorAll('.toc-link');
+      if (links.length === 0) return;
+
+      var headingElements = [];
+      links.forEach(function(link) {
+        var id = link.id.replace('toc-', '');
+        var heading = document.getElementById(id);
+        if (heading) headingElements.push({ id: id, el: heading, link: link });
+      });
+
+      if (headingElements.length === 0) return;
+
+      function updateHighlight() {
+        var scrollTop = window.scrollY + 80;
+        var current = headingElements[0];
+
+        for (var i = 0; i < headingElements.length; i++) {
+          if (headingElements[i].el.offsetTop <= scrollTop) {
+            current = headingElements[i];
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.remove('text-primary', 'font-medium', 'bg-primary/5');
+        });
+
+        if (current) {
+          current.link.classList.add('text-primary', 'font-medium', 'bg-primary/5');
+        }
+      }
+
+      window.addEventListener('scroll', updateHighlight, { passive: true });
+      updateHighlight();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> </div> </div> </div>  </main> <footer class="border-t border-gray-200/50 dark:border-gray-700/50 mt-16 overflow-hidden" data-astro-cid-sz7xmlte> <div class="marquee-track py-4 border-b border-gray-200/30 dark:border-gray-700/30" data-astro-cid-sz7xmlte> <div class="marquee-content" data-astro-cid-sz7xmlte> <a href="/" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 首页 </a><a href="/weekly" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 周刊 </a><a href="/archives" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 文章 </a><a href="/friends" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 友链 </a><a href="/about" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 关于 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 4k 字 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 6 篇文章 </a><a href="https://astro.build" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Astro </a><a href="https://tailwindcss.com" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Tailwind CSS </a><a href="/" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 首页 </a><a href="/weekly" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 周刊 </a><a href="/archives" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 文章 </a><a href="/friends" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 友链 </a><a href="/about" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 关于 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 4k 字 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 6 篇文章 </a><a href="https://astro.build" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Astro </a><a href="https://tailwindcss.com" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Tailwind CSS </a> </div> </div> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" data-astro-cid-sz7xmlte> <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte> <a href="/" class="text-lg font-bold text-primary hover:opacity-80 transition-opacity" data-astro-cid-sz7xmlte> Sify Blog </a> <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 leading-relaxed" data-astro-cid-sz7xmlte> 一个基于 Astro 的现代化博客主题 </p> <div class="flex items-center gap-3 mt-4" data-astro-cid-sz7xmlte> <span class="text-xs text-gray-400 dark:text-gray-500" data-astro-cid-sz7xmlte> 6 篇文章 · 4k 字
+</span> </div> </div> <div data-astro-cid-sz7xmlte> <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4" data-astro-cid-sz7xmlte>导航</h3> <ul class="space-y-2.5" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte> <a href="/" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 首页 </a> </li><li data-astro-cid-sz7xmlte> <a href="/weekly" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 周刊 </a> </li><li data-astro-cid-sz7xmlte> <a href="/archives" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 文章 </a> </li><li data-astro-cid-sz7xmlte> <a href="/friends" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 友链 </a> </li><li data-astro-cid-sz7xmlte> <a href="/about" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 关于 </a> </li> </ul> </div> <div data-astro-cid-sz7xmlte> <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4" data-astro-cid-sz7xmlte>社交</h3> <ul class="space-y-2.5" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte> <a href="https://github.com/santisify" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> GitHub </a> </li><li data-astro-cid-sz7xmlte> <a href="/rss.xml" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> RSS </a> </li> <li data-astro-cid-sz7xmlte> <a href="/rss.xml" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte>
+RSS
+</a> </li> </ul> </div> </div> <div class="border-t border-gray-200/50 dark:border-gray-700/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400 dark:text-gray-500" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>&copy; 2026 santisify</span> <span data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" class="text-primary hover:underline" data-astro-cid-sz7xmlte>Astro</a> & <a href="https://tailwindcss.com/" class="text-cyan-500 hover:underline" data-astro-cid-sz7xmlte>Tailwind CSS</a> </span> </div> </div> </footer>  <script type="module" src="/_astro/Footer.astro_astro_type_script_index_0_lang.dEfjkTPS.js"></script> <button id="back-to-top" class="fixed bottom-8 right-8 lg:bottom-8 lg:right-8 bottom-20 right-6 z-50 p-3 rounded-full bg-primary text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90" aria-label="返回顶部"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg> </button> <script>
+  (function() {
+    function init() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+
+      function toggleButton() {
+        var show = window.scrollY > 300;
+        btn.classList.toggle('opacity-0', !show);
+        btn.classList.toggle('invisible', !show);
+      }
+
+      window.addEventListener('scroll', toggleButton);
+
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      toggleButton();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <script>
+  (function() {
+    function init() {
+      if (typeof mermaid === 'undefined') return;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+        securityLevel: 'loose',
+      });
+
+      var mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+      if (mermaidBlocks.length === 0) return;
+
+      mermaidBlocks.forEach(function(pre, index) {
+        var code = pre.querySelector('code');
+        var text = '';
+        if (code) {
+          var lines = code.querySelectorAll('.line');
+          if (lines.length > 0) {
+            text = Array.from(lines).map(function(line) {
+              return line.textContent || '';
+            }).join('\n');
+          } else {
+            text = code.textContent || '';
+          }
+        }
+
+        var container = document.createElement('div');
+        container.className = 'mermaid-container my-6 p-4 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-x-auto';
+
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.id = 'mermaid-' + index;
+        div.textContent = text;
+        container.appendChild(div);
+
+        pre.parentNode?.insertBefore(container, pre);
+        pre.remove();
+      });
+
+      mermaid.run();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>  <div class="grain-overlay" aria-hidden="true"></div> <script type="module" src="/_astro/SmoothScroll.astro_astro_type_script_index_0_lang.CCpgMc0D.js"></script> <script type="module" src="/_astro/ScrollReveal.astro_astro_type_script_index_0_lang.CSLndJPs.js"></script> <script type="module">function s(){window.matchMedia("(prefers-reduced-motion: reduce)").matches||window.matchMedia("(hover: hover) and (pointer: fine)").matches&&document.querySelectorAll(".card-tilt").forEach(e=>{e.addEventListener("mousemove",n=>{const t=e.getBoundingClientRect(),i=n.clientX-t.left,a=n.clientY-t.top,o=t.width/2,r=t.height/2,c=(a-r)/r*-8,d=(i-o)/o*8;e.style.transform=`perspective(1100px) rotateX(${c}deg) rotateY(${d}deg) translateY(-4px) scale(1.01)`,e.style.boxShadow="0 20px 40px rgba(0,0,0,0.12)"}),e.addEventListener("mouseleave",()=>{e.style.transform="",e.style.boxShadow=""})})}s();document.addEventListener("astro:after-swap",()=>{setTimeout(s,100)});</script> <script type="module">function r(){document.querySelectorAll("pre").forEach(e=>{if(e.parentElement?.classList.contains("code-block-wrapper")||e.getAttribute("data-language")==="mermaid")return;const a=e.querySelector("code")?.className.match(/language-(\w+)/)?.[1]||e.getAttribute("data-language")||"",n=document.createElement("div");if(n.className="code-block-wrapper",a&&n.setAttribute("data-lang",a),e.parentNode?.insertBefore(n,e),n.appendChild(e),a){const o=document.createElement("span");o.className="code-lang-label",o.textContent=a,n.appendChild(o)}const t=document.createElement("button");t.className="copy-btn",t.title="复制代码",t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',t.addEventListener("click",async()=>{const o=e.querySelector("code")?.textContent||e.textContent||"";await navigator.clipboard.writeText(o),t.classList.add("copied"),t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',setTimeout(()=>{t.classList.remove("copied"),t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'},2e3)}),n.appendChild(t)})}r();document.addEventListener("astro:after-swap",r);</script> <script type="module">"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").catch(()=>{})});</script> </body> </html> <script>
+  (function() {
+    function init() {
+      var trigger = document.getElementById('mobile-toc-trigger');
+      var drawer = document.getElementById('mobile-toc-drawer');
+      var backdrop = document.getElementById('mobile-toc-backdrop');
+      var panel = document.getElementById('mobile-toc-panel');
+      var closeBtn = document.getElementById('mobile-toc-close');
+      if (!trigger || !drawer || !backdrop || !panel) return;
+
+      function openDrawer() {
+        drawer.removeAttribute('inert');
+        drawer.setAttribute('aria-hidden', 'false');
+        drawer.classList.remove('pointer-events-none');
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('translate-y-full');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('translate-y-full');
+        setTimeout(function() {
+          drawer.setAttribute('inert', '');
+          drawer.setAttribute('aria-hidden', 'true');
+          drawer.classList.add('pointer-events-none');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      trigger.addEventListener('click', openDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+          closeDrawer();
+        }
+      });
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <script type="module" src="/_astro/PostLayout.astro_astro_type_script_index_0_lang.BerODGyl.js"></script>

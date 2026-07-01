@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v6.4.8"><meta name="theme-color" content="#e9536a"><title>教程 - Sify Blog</title><meta name="description" content="一个基于 Astro 的现代化博客主题"><meta name="author" content="santisify"><meta name="robots" content="index, follow"><link rel="canonical" href="https://santisify.top/categories/%E6%95%99%E7%A8%8B/"><meta property="og:site_name" content="Sify Blog"><meta property="og:title" content="教程 - Sify Blog"><meta property="og:type" content="website"><meta property="og:description" content="一个基于 Astro 的现代化博客主题"><meta property="og:url" content="https://santisify.top/categories/%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh_CN"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="教程 - Sify Blog"><meta name="twitter:description" content="一个基于 Astro 的现代化博客主题"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"教程 - Sify Blog","description":"一个基于 Astro 的现代化博客主题","url":"https://santisify.top/categories/%E6%95%99%E7%A8%8B/","author":{"@type":"Person","name":"santisify"},"publisher":{"@type":"Organization","name":"Sify Blog","logo":{"@type":"ImageObject","url":"https://santisify.top/favicon.svg"}}}</script><link rel="alternate" type="application/rss+xml" title="Sify Blog" href="/rss.xml"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#e9536a"><script src="/assets/js/mermaid.min.js"></script><script>
+      (function() {
+        function getTheme() {
+          if (localStorage.theme === 'dark') return 'dark';
+          if (localStorage.theme === 'light') return 'light';
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+          var root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.dataset.theme = theme;
+        }
+
+        applyTheme(getTheme());
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          if (!('theme' in localStorage)) {
+            applyTheme(getTheme());
+          }
+        });
+
+        document.addEventListener('astro:after-swap', function() {
+          applyTheme(getTheme());
+        });
+
+        window.__applyTheme = applyTheme;
+        window.__getTheme = getTheme;
+      })();
+    </script><style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media(prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><link rel="stylesheet" href="/_astro/BaseLayout.CVd9qkCz.css"><style>[data-astro-transition-scope="astro-vm4occjh-1"] { view-transition-name: astro-vm4occjh-1; }@layer astro { ::view-transition-old(astro-vm4occjh-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(astro-vm4occjh-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-vm4occjh-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-vm4occjh-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-vm4occjh-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-vm4occjh-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-vm4occjh-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-vm4occjh-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-vm4occjh-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-vm4occjh-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-vm4occjh-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-vm4occjh-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-vm4occjh-2"] { view-transition-name: astro-vm4occjh-2; }@layer astro { ::view-transition-old(astro-vm4occjh-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(astro-vm4occjh-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-vm4occjh-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-vm4occjh-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-vm4occjh-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-vm4occjh-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-vm4occjh-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-vm4occjh-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-vm4occjh-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-vm4occjh-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-vm4occjh-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-vm4occjh-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-vm4occjh-3"] { view-transition-name: astro-vm4occjh-3; }@layer astro { ::view-transition-old(astro-vm4occjh-3) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(astro-vm4occjh-3) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-vm4occjh-3) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-vm4occjh-3) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-vm4occjh-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-vm4occjh-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-vm4occjh-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-vm4occjh-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-vm4occjh-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-vm4occjh-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-vm4occjh-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-vm4occjh-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body class="min-h-screen flex flex-col"> <meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script> <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div id="nav-container" class="flex items-center justify-between h-16 transition-all duration-500"> <a href="/" class="flex items-center gap-2 shrink-0"> <span class="text-xl font-bold text-primary hover:opacity-80 transition-opacity"> Sify Blog </span> </a> <nav class="hidden md:flex items-center gap-1" aria-label="主导航"> <a href="/" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="首页" data-en="Home">首页</span> </a><a href="/weekly" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="周刊" data-en="Weekly">周刊</span> </a><div class="relative group"> <span class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary group-hover:bg-primary/5 transition-colors cursor-pointer flex items-center gap-1"> <span class="nav-text" data-zh="文章" data-en="Archives">文章</span> <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path> </svg> </span> <div class="absolute top-full left-0 mt-1 w-36 py-2 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"> <a href="/categories" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="分类" data-en="Categories">分类</span> </a> <a href="/tags" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="标签" data-en="Tags">标签</span> </a> <a href="/archives" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="归档" data-en="Archives">归档</span> </a> </div> </div><a href="/friends" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="友链" data-en="Friends">友链</span> </a><a href="/about" class="px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-primary/5 transition-colors"> <span class="nav-text" data-zh="关于" data-en="About">关于</span> </a> </nav> <div class="flex items-center gap-2"> <button id="search-trigger" class="flex items-center gap-1.5 p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="搜索"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <kbd class="hidden sm:inline-flex items-center text-[10px] font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">⌘K</kbd> </button> <button id="lang-toggle" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium" aria-label="切换语言"> <span class="lang-zh">中</span> <span class="lang-en hidden">EN</span> </button> <script>
+  (function() {
+    function init() {
+      var btn = document.getElementById('lang-toggle');
+      if (!btn) return;
+
+      function updateLabel() {
+        var locale = localStorage.getItem('locale') || 'zh';
+        var zhLabel = btn.querySelector('.lang-zh');
+        var enLabel = btn.querySelector('.lang-en');
+        if (locale === 'en') {
+          zhLabel?.classList.add('hidden');
+          enLabel?.classList.remove('hidden');
+        } else {
+          zhLabel?.classList.remove('hidden');
+          enLabel?.classList.add('hidden');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        var current = localStorage.getItem('locale') || 'zh';
+        var next = current === 'zh' ? 'en' : 'zh';
+        localStorage.setItem('locale', next);
+        updateLabel();
+        window.location.reload();
+      });
+
+      updateLabel();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <button id="theme-toggle" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="切换主题"> <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="菜单"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="hidden md:hidden pb-4"> <nav class="flex flex-col gap-0.5"> <div> <a href="/" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="首页" data-en="Home">首页</span> </a>  </div><div> <a href="/weekly" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="周刊" data-en="Weekly">周刊</span> </a>  </div><div> <a class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] cursor-pointer"> <span class="nav-text" data-zh="文章" data-en="Archives">文章</span> </a> <div class="ml-4 space-y-0"> <a href="/categories" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="分类" data-en="Categories">分类</span> </a> <a href="/tags" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="标签" data-en="Tags">标签</span> </a> <a href="/archives" class="flex items-center px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors min-h-[44px]"> <span class="nav-text" data-zh="归档" data-en="Archives">归档</span> </a> </div> </div><div> <a href="/friends" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="友链" data-en="Friends">友链</span> </a>  </div><div> <a href="/about" class="flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-primary/5 transition-colors min-h-[44px] "> <span class="nav-text" data-zh="关于" data-en="About">关于</span> </a>  </div> </nav> </div> </div> </header> <div id="search-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true"> <div id="search-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div> <div class="absolute top-[10%] sm:top-[15%] left-1/2 -translate-x-1/2 w-full max-w-xl max-h-[80vh] flex flex-col"> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-2xl overflow-hidden mx-4"> <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100 dark:border-gray-700"> <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <input id="search-input" type="text" placeholder="搜索文章..." class="flex-1 bg-transparent border-none outline-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400" autocomplete="off"> <button id="search-close" class="flex items-center justify-center w-11 h-11 -mr-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="关闭搜索"> <kbd class="text-[10px] font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded mr-1">esc</kbd> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div id="search-results" class="max-h-80 overflow-y-auto p-2"> <div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div> </div> </div> </div> </div> <script type="module">let c=null;async function v(){if(!c)try{c=await(await fetch("/search-index.json")).json();const t=document.getElementById("search-input");t?.value&&y(t.value)}catch{c=[]}}function u(){const e=document.getElementById("search-modal");e&&(e.classList.remove("hidden"),e.setAttribute("aria-hidden","false"),document.body.style.overflow="hidden",setTimeout(()=>{document.getElementById("search-input")?.focus()},100),v())}function d(){const e=document.getElementById("search-modal");if(!e)return;e.classList.add("hidden"),e.setAttribute("aria-hidden","true"),document.body.style.overflow="";const t=document.getElementById("search-input");t&&(t.value="");const r=document.getElementById("search-results");r&&(r.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div>')}function y(e){const t=document.getElementById("search-results");if(!t)return;if(!c){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">加载中...</div>';return}if(!e.trim()){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">输入关键词搜索文章</div>';return}const o=e.toLowerCase().trim().split(/\s+/),i=c.filter(n=>{const s=[n.title,n.description,n.category,n.body,...n.tags||[]].join(" ").toLowerCase();return o.every(l=>s.includes(l))}).slice(0,20);if(i.length===0){t.innerHTML='<div class="px-3 py-8 text-center text-sm text-gray-400">没有找到结果</div>';return}const a=new RegExp(`(${o.map(n=>k(n)).join("|")})`,"gi");t.innerHTML=i.map(n=>{const s=f(n,o);return`
+      <a href="${n.type==="weekly"?"/weekly/":"/post/"}${n.slug}" class="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors line-clamp-1">${p(n.title,a)}</div>
+          ${s?`<div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 line-clamp-2">${p(s,a)}</div>`:""}
+          <div class="flex items-center gap-2 mt-0.5">
+            ${n.category?`<span class="text-xs text-primary/70">${x(n.category)}</span>`:""}
+            ${n.category?'<span class="w-px h-2.5 bg-gray-300 dark:bg-gray-600"></span>':""}
+            <span class="text-xs text-gray-400 dark:text-gray-500">${n.type==="weekly"?"周刊":"博客"}</span>
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 dark:text-gray-600 shrink-0 mt-1 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+    `}).join("")}function f(e,t){const r=e.body||e.description||"";if(!r)return"";const o=r.toLowerCase();for(const i of t){const a=o.indexOf(i);if(a!==-1){const n=Math.max(0,a-20),s=Math.min(r.length,a+i.length+40),l=r.slice(n,s);return(n>0?"...":"")+l+(s<r.length?"...":"")}}return""}function p(e,t){return x(e).replace(t,'<mark class="bg-primary/20 text-primary rounded-sm px-0.5">$1</mark>')}function k(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function x(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function m(e){y(e.target.value)}function g(e){(e.metaKey||e.ctrlKey)&&e.key==="k"&&(e.preventDefault(),document.getElementById("search-modal")?.classList.contains("hidden")?u():d()),e.key==="Escape"&&d()}function h(){document.removeEventListener("keydown",g),document.addEventListener("keydown",g);const e=document.getElementById("search-input");e&&(e.removeEventListener("input",m),e.addEventListener("input",m));const t=document.getElementById("search-trigger");t&&(t.removeEventListener("click",u),t.addEventListener("click",u)),document.getElementById("search-close")?.addEventListener("click",d),document.getElementById("search-backdrop")?.addEventListener("click",d)}h();document.addEventListener("astro:after-swap",h);</script> <script>
+  (function() {
+    var header = document.getElementById('site-header');
+    var container = document.getElementById('nav-container');
+    if (!header || !container) return;
+
+    var SCROLL_THRESHOLD = 100;
+    var isPill = false;
+
+    function updateNav() {
+      var scrollY = window.scrollY;
+      var shouldBePill = scrollY > SCROLL_THRESHOLD;
+
+      if (shouldBePill !== isPill) {
+        isPill = shouldBePill;
+        if (isPill) {
+          header.classList.add('backdrop-blur-md', 'bg-white/80', 'dark:bg-[var(--color-bg-dark)]/80', 'border-b', 'border-gray-200/50', 'dark:border-gray-700/50');
+          header.style.top = '0';
+          header.style.left = '0';
+          header.style.right = '0';
+          header.style.width = '100%';
+          header.style.borderRadius = '0';
+          container.style.maxWidth = '80rem';
+        } else {
+          header.classList.remove('backdrop-blur-md', 'bg-white/80', 'dark:bg-[var(--color-bg-dark)]/80', 'border-b', 'border-gray-200/50', 'dark:border-gray-700/50');
+          header.style.top = '0';
+          header.style.left = '0';
+          header.style.right = '0';
+          header.style.width = '100%';
+          header.style.borderRadius = '0';
+          container.style.maxWidth = '80rem';
+        }
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    updateNav();
+  })();
+</script> <script>
+  function handleThemeToggle(e) {
+    var root = document.documentElement;
+    var isDark = root.classList.contains('dark');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (isDark) {
+        root.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        root.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+      return;
+    }
+
+    var btn = e.currentTarget;
+    var rect = btn.getBoundingClientRect();
+    var x = rect.left + rect.width / 2;
+    var y = rect.top + rect.height / 2;
+    var maxRadius = Math.sqrt(
+      Math.pow(Math.max(x, window.innerWidth - x), 2) +
+      Math.pow(Math.max(y, window.innerHeight - y), 2)
+    ) * 1.2;
+
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9998;pointer-events:none;' +
+      'clip-path:circle(0px at ' + x + 'px ' + y + 'px);' +
+      'background:' + (isDark ? '#1a1a2e' : '#f5f5f5') + ';';
+    document.body.appendChild(overlay);
+
+    root.classList.add('theme-transitioning');
+
+    requestAnimationFrame(function() {
+      overlay.style.transition = 'clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      overlay.style.clipPath = 'circle(' + maxRadius + 'px at ' + x + 'px ' + y + 'px)';
+
+      setTimeout(function() {
+        if (isDark) {
+          root.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          root.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+      }, 280);
+
+      setTimeout(function() {
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.4s ease';
+      }, 600);
+
+      setTimeout(function() {
+        overlay.remove();
+        root.classList.remove('theme-transitioning');
+      }, 1000);
+    });
+  }
+
+  function handleMobileMenu() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  }
+
+  function applyNavTranslations() {
+    var locale = localStorage.getItem('locale') || 'zh';
+    document.querySelectorAll('.nav-text').forEach(function(el) {
+      var text = el.getAttribute('data-' + locale);
+      if (text) el.textContent = text;
+    });
+  }
+
+  function bindHandlers() {
+    var themeBtn = document.getElementById('theme-toggle');
+    var mobileBtn = document.getElementById('mobile-menu-btn');
+
+    if (themeBtn) {
+      themeBtn.removeEventListener('click', handleThemeToggle);
+      themeBtn.addEventListener('click', handleThemeToggle);
+    }
+
+    if (mobileBtn) {
+      mobileBtn.removeEventListener('click', handleMobileMenu);
+      mobileBtn.addEventListener('click', handleMobileMenu);
+    }
+
+    applyNavTranslations();
+  }
+
+  bindHandlers();
+
+  document.addEventListener('astro:after-swap', function() {
+    bindHandlers();
+  });
+</script> <main class="flex-1">  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div class="flex flex-col lg:flex-row gap-8 py-8"> <aside class="hidden lg:block w-full lg:w-80 shrink-0 order-first"> <div class="sticky top-20 space-y-6"> <aside class="space-y-5"> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-6 text-center border border-gray-100/50 dark:border-white/[0.05]"> <div class="relative inline-block mb-3"> <img src="https://santisify.top/_vercel/image?url=_astro%2Favatar.BpCip-1B.png&amp;w=1200&amp;q=100" alt="santisify" class="w-20 h-20 rounded-full mx-auto object-cover ring-2 ring-primary/20 ring-offset-2 ring-offset-white dark:ring-offset-[var(--color-card-dark)]" width="80" height="80"> <div class="absolute bottom-0 right-0 w-5 h-5 bg-green-400 rounded-full border-2 border-white dark:border-[var(--color-card-dark)]"></div> </div> <h2 class="font-semibold text-base">santisify</h2> <p class="text-xs text-gray-400 dark:text-gray-500 mt-1 leading-relaxed">一个基于 Astro 的现代化博客主题</p> <div class="flex items-center justify-center gap-3 mt-4"> <a href="https://github.com/santisify" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all" title="GitHub"> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg>  </a><a href="/rss.xml" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all" title="RSS">  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"> <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"></path> </svg> </a> </div> <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800/50"> <a href="/archives" class="text-center group"> <div class="font-semibold text-sm group-hover:text-primary transition-colors">6</div> <div class="text-[10px] text-gray-400 uppercase tracking-wider">文章</div> </a> <div class="w-px h-6 bg-gray-100 dark:bg-gray-800/50"></div> <a href="/archives" class="text-center group"> <div class="font-semibold text-sm group-hover:text-primary transition-colors">4k</div> <div class="text-[10px] text-gray-400 uppercase tracking-wider">字数</div> </a> </div> </div> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 border border-gray-100/50 dark:border-white/[0.05]" data-sidebar-section="categories"> <h2 class="text-xs font-semibold mb-3 text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+分类
+</h2> <div class="sidebar-expand-list flex flex-wrap gap-2"> <a href="/categories/教程" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 教程 <span class="ml-1 opacity-60">(3)</span> </a><a href="/categories/笔记" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 笔记 <span class="ml-1 opacity-60">(2)</span> </a><a href="/categories/工具" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 工具 <span class="ml-1 opacity-60">(1)</span> </a> </div>  </div> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 border border-gray-100/50 dark:border-white/[0.05]" data-sidebar-section="tags"> <h2 class="text-xs font-semibold mb-3 text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+标签
+</h2> <div class="sidebar-expand-list flex flex-wrap gap-2"> <a href="/tags/教程" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 教程 <span class="ml-1 opacity-60">(4)</span> </a><a href="/tags/Astro" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> Astro <span class="ml-1 opacity-60">(2)</span> </a><a href="/tags/入门" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 入门 <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/Markdown" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> Markdown <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/MDX" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> MDX <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/Mermaid" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> Mermaid <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/图表" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 图表 <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/定制" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 定制 <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/介绍" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 介绍 <span class="ml-1 opacity-60">(1)</span> </a> </div>  </div> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 border border-gray-100/50 dark:border-white/[0.05]"> <h2 class="text-xs font-semibold mb-4 text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+随机推荐
+</h2> <div class="space-y-2"> <a href="/post/markdown-guide" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> Markdown 语法指南 </a><a href="/post/welcome" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> 欢迎使用 Sify Blog </a><a href="/post/getting-started" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> 从零搭建博客 </a><a href="/post/mdx-demo" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> MDX 与数学公式 </a><a href="/post/shortcodes" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> 主题功能一览 </a> </div> </div> </aside> <script>
+  function initSidebarToggles() {
+    document.querySelectorAll('.sidebar-toggle-btn').forEach((btn) => {
+      if (btn.dataset.initialized) return;
+      btn.dataset.initialized = 'true';
+
+      const section = btn.closest('[data-sidebar-section]');
+      if (!section) return;
+      const list = section.querySelector('.sidebar-expand-list');
+      if (!list) return;
+      const extraItems = list.querySelectorAll('.sidebar-extra');
+      const label = btn.textContent || '';
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.dataset.expanded === 'true';
+        extraItems.forEach((el) => el.classList.toggle('hidden', expanded));
+        btn.dataset.expanded = String(!expanded);
+        btn.textContent = expanded ? label : '收起';
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSidebarToggles);
+  initSidebarToggles();
+</script> </div> </aside> <div class="flex-1 min-w-0">  <h1 class="text-2xl font-bold mb-8 flex items-center gap-2"> <span class="w-1 h-6 bg-primary rounded-full inline-block"></span>
+分类：教程 <span class="text-base font-normal text-gray-400">
+(3 篇)
+</span> </h1> <section><h2 class="text-xl font-bold mb-6 flex items-center gap-2"><span class="w-1 h-6 bg-primary rounded-full inline-block"></span>
+文章列表
+</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="card-tilt group relative bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm overflow-hidden border border-gray-100/50 dark:border-white/[0.05] hover:shadow-xl hover:border-gray-200/50 dark:hover:border-white/[0.08] transition-all duration-300" data-astro-transition-scope="astro-vm4occjh-1"> <a href="/post/getting-started" class="block"> <div class="aspect-[2/1] overflow-hidden relative"> <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200" alt="从零搭建博客" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"> <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> </div> <div class="p-5"> <div class="flex items-center gap-2 mb-3"> <span class="inline-flex items-center text-[11px] font-medium text-primary bg-primary/10 px-2.5 py-0.5 rounded-full"> 教程 </span>   </div> <h2 class="text-[15px] font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug"> 从零搭建博客 </h2> <p class="text-sm text-gray-400 dark:text-gray-500 line-clamp-2 leading-relaxed mb-3"> 详细介绍如何基于 Sify Blog 主题从零搭建个人博客，包括安装、配置、编写文章和部署全流程。 </p> <div class="flex items-center justify-between"> <div class="flex items-center gap-3 text-[11px] text-gray-400 dark:text-gray-500"> <time datetime="2026-06-10">2026-06-10</time>  <span class="w-px h-3 bg-gray-200 dark:bg-gray-700"></span> <span>663 字</span>  </div> <span class="text-[11px] text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+阅读
+<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path> </svg> </span> </div> </div> </a> <div class="px-5 pb-4 flex flex-wrap gap-1.5"> <a href="/tags/教程" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> 教程 </a><a href="/tags/入门" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> 入门 </a>  </div> </article><article class="card-tilt group relative bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm overflow-hidden border border-gray-100/50 dark:border-white/[0.05] hover:shadow-xl hover:border-gray-200/50 dark:hover:border-white/[0.08] transition-all duration-300" data-astro-transition-scope="astro-vm4occjh-2"> <a href="/post/markdown-guide" class="block"> <div class="aspect-[2/1] overflow-hidden relative"> <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200" alt="Markdown 语法指南" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"> <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> </div> <div class="p-5"> <div class="flex items-center gap-2 mb-3"> <span class="inline-flex items-center text-[11px] font-medium text-primary bg-primary/10 px-2.5 py-0.5 rounded-full"> 教程 </span>   </div> <h2 class="text-[15px] font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug"> Markdown 语法指南 </h2> <p class="text-sm text-gray-400 dark:text-gray-500 line-clamp-2 leading-relaxed mb-3"> 本主题支持的全部 Markdown 语法示例，包括标题、列表、表格、代码块、引用、图片等。 </p> <div class="flex items-center justify-between"> <div class="flex items-center gap-3 text-[11px] text-gray-400 dark:text-gray-500"> <time datetime="2026-06-10">2026-06-10</time>  <span class="w-px h-3 bg-gray-200 dark:bg-gray-700"></span> <span>411 字</span>  </div> <span class="text-[11px] text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+阅读
+<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path> </svg> </span> </div> </div> </a> <div class="px-5 pb-4 flex flex-wrap gap-1.5"> <a href="/tags/Markdown" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> Markdown </a><a href="/tags/教程" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> 教程 </a>  </div> </article><article class="card-tilt group relative bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm overflow-hidden border border-gray-100/50 dark:border-white/[0.05] hover:shadow-xl hover:border-gray-200/50 dark:hover:border-white/[0.08] transition-all duration-300" data-astro-transition-scope="astro-vm4occjh-3"> <a href="/post/mermaid-demo" class="block"> <div class="aspect-[2/1] overflow-hidden relative"> <img src="https://mermaid.js.org/images/header.png" alt="Mermaid 图表使用指南" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"> <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> </div> <div class="p-5"> <div class="flex items-center gap-2 mb-3"> <span class="inline-flex items-center text-[11px] font-medium text-primary bg-primary/10 px-2.5 py-0.5 rounded-full"> 教程 </span>   </div> <h2 class="text-[15px] font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug"> Mermaid 图表使用指南 </h2> <p class="text-sm text-gray-400 dark:text-gray-500 line-clamp-2 leading-relaxed mb-3"> 在 Markdown 中使用 Mermaid 绘制流程图、序列图、甘特图等图表 </p> <div class="flex items-center justify-between"> <div class="flex items-center gap-3 text-[11px] text-gray-400 dark:text-gray-500"> <time datetime="2026-06-10">2026-06-10</time>  <span class="w-px h-3 bg-gray-200 dark:bg-gray-700"></span> <span>588 字</span>  </div> <span class="text-[11px] text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+阅读
+<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path> </svg> </span> </div> </div> </a> <div class="px-5 pb-4 flex flex-wrap gap-1.5"> <a href="/tags/教程" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> 教程 </a><a href="/tags/Mermaid" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> Mermaid </a><a href="/tags/图表" class="text-[10px] px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all border border-gray-100/50 dark:border-white/[0.03]"> 图表 </a>  </div> </article></div></section>  </div> </div> </div> <button id="sidebar-toggle" class="lg:hidden fixed bottom-6 right-6 z-40 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-dark transition-colors" aria-label="打开侧边栏"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path> </svg> </button> <div id="sidebar-drawer" class="lg:hidden fixed inset-0 z-50 pointer-events-none" aria-hidden="true" inert> <div id="sidebar-backdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div> <div id="sidebar-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white dark:bg-[var(--color-bg-dark)] shadow-2xl transform translate-x-full transition-transform duration-300 overflow-y-auto"> <div class="p-4"> <button id="sidebar-close" class="mb-4 p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="关闭侧边栏"> <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <aside class="space-y-5"> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-6 text-center border border-gray-100/50 dark:border-white/[0.05]"> <div class="relative inline-block mb-3"> <img src="https://santisify.top/_vercel/image?url=_astro%2Favatar.BpCip-1B.png&amp;w=1200&amp;q=100" alt="santisify" class="w-20 h-20 rounded-full mx-auto object-cover ring-2 ring-primary/20 ring-offset-2 ring-offset-white dark:ring-offset-[var(--color-card-dark)]" width="80" height="80"> <div class="absolute bottom-0 right-0 w-5 h-5 bg-green-400 rounded-full border-2 border-white dark:border-[var(--color-card-dark)]"></div> </div> <h2 class="font-semibold text-base">santisify</h2> <p class="text-xs text-gray-400 dark:text-gray-500 mt-1 leading-relaxed">一个基于 Astro 的现代化博客主题</p> <div class="flex items-center justify-center gap-3 mt-4"> <a href="https://github.com/santisify" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all" title="GitHub"> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg>  </a><a href="/rss.xml" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-white/[0.03] text-gray-400 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all" title="RSS">  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"> <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"></path> </svg> </a> </div> <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800/50"> <a href="/archives" class="text-center group"> <div class="font-semibold text-sm group-hover:text-primary transition-colors">6</div> <div class="text-[10px] text-gray-400 uppercase tracking-wider">文章</div> </a> <div class="w-px h-6 bg-gray-100 dark:bg-gray-800/50"></div> <a href="/archives" class="text-center group"> <div class="font-semibold text-sm group-hover:text-primary transition-colors">4k</div> <div class="text-[10px] text-gray-400 uppercase tracking-wider">字数</div> </a> </div> </div> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 border border-gray-100/50 dark:border-white/[0.05]" data-sidebar-section="categories"> <h2 class="text-xs font-semibold mb-3 text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+分类
+</h2> <div class="sidebar-expand-list flex flex-wrap gap-2"> <a href="/categories/教程" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 教程 <span class="ml-1 opacity-60">(3)</span> </a><a href="/categories/笔记" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 笔记 <span class="ml-1 opacity-60">(2)</span> </a><a href="/categories/工具" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 工具 <span class="ml-1 opacity-60">(1)</span> </a> </div>  </div> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 border border-gray-100/50 dark:border-white/[0.05]" data-sidebar-section="tags"> <h2 class="text-xs font-semibold mb-3 text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+标签
+</h2> <div class="sidebar-expand-list flex flex-wrap gap-2"> <a href="/tags/教程" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 教程 <span class="ml-1 opacity-60">(4)</span> </a><a href="/tags/Astro" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> Astro <span class="ml-1 opacity-60">(2)</span> </a><a href="/tags/入门" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 入门 <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/Markdown" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> Markdown <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/MDX" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> MDX <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/Mermaid" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> Mermaid <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/图表" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 图表 <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/定制" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 定制 <span class="ml-1 opacity-60">(1)</span> </a><a href="/tags/介绍" class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors "> 介绍 <span class="ml-1 opacity-60">(1)</span> </a> </div>  </div> <div class="bg-white dark:bg-[var(--color-card-dark)] rounded-2xl shadow-sm p-5 border border-gray-100/50 dark:border-white/[0.05]"> <h2 class="text-xs font-semibold mb-4 text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+随机推荐
+</h2> <div class="space-y-2"> <a href="/post/mermaid-demo" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> Mermaid 图表使用指南 </a><a href="/post/mdx-demo" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> MDX 与数学公式 </a><a href="/post/markdown-guide" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> Markdown 语法指南 </a><a href="/post/shortcodes" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> 主题功能一览 </a><a href="/post/welcome" class="block text-xs text-gray-500 dark:text-gray-400 truncate hover:text-primary transition-colors"> 欢迎使用 Sify Blog </a> </div> </div> </aside> <script>
+  function initSidebarToggles() {
+    document.querySelectorAll('.sidebar-toggle-btn').forEach((btn) => {
+      if (btn.dataset.initialized) return;
+      btn.dataset.initialized = 'true';
+
+      const section = btn.closest('[data-sidebar-section]');
+      if (!section) return;
+      const list = section.querySelector('.sidebar-expand-list');
+      if (!list) return;
+      const extraItems = list.querySelectorAll('.sidebar-extra');
+      const label = btn.textContent || '';
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.dataset.expanded === 'true';
+        extraItems.forEach((el) => el.classList.toggle('hidden', expanded));
+        btn.dataset.expanded = String(!expanded);
+        btn.textContent = expanded ? label : '收起';
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSidebarToggles);
+  initSidebarToggles();
+</script> </div> </div> </div> <script>
+  (function() {
+    function init() {
+      var toggle = document.getElementById('sidebar-toggle');
+      var drawer = document.getElementById('sidebar-drawer');
+      var backdrop = document.getElementById('sidebar-backdrop');
+      var panel = document.getElementById('sidebar-panel');
+      var close = document.getElementById('sidebar-close');
+      if (!toggle || !drawer || !backdrop || !panel) return;
+
+      function openSidebar() {
+        drawer.removeAttribute('inert');
+        drawer.setAttribute('aria-hidden', 'false');
+        drawer.classList.remove('pointer-events-none');
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
+        setTimeout(function() {
+          drawer.setAttribute('inert', '');
+          drawer.setAttribute('aria-hidden', 'true');
+          drawer.classList.add('pointer-events-none');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      toggle.removeEventListener('click', openSidebar);
+      toggle.addEventListener('click', openSidebar);
+      close?.removeEventListener('click', closeSidebar);
+      close?.addEventListener('click', closeSidebar);
+      backdrop.removeEventListener('click', closeSidebar);
+      backdrop.addEventListener('click', closeSidebar);
+
+      document.removeEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    function handleEscape(e) {
+      var drawer = document.getElementById('sidebar-drawer');
+      if (e.key === 'Escape' && drawer?.getAttribute('aria-hidden') === 'false') {
+        var backdrop = document.getElementById('sidebar-backdrop');
+        var panel = document.getElementById('sidebar-panel');
+        backdrop?.classList.remove('opacity-100');
+        backdrop?.classList.add('opacity-0');
+        panel?.classList.add('translate-x-full');
+        setTimeout(function() {
+          drawer?.setAttribute('inert', '');
+          drawer?.setAttribute('aria-hidden', 'true');
+          drawer?.classList.add('pointer-events-none');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>  </main> <footer class="border-t border-gray-200/50 dark:border-gray-700/50 mt-16 overflow-hidden" data-astro-cid-sz7xmlte> <div class="marquee-track py-4 border-b border-gray-200/30 dark:border-gray-700/30" data-astro-cid-sz7xmlte> <div class="marquee-content" data-astro-cid-sz7xmlte> <a href="/" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 首页 </a><a href="/weekly" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 周刊 </a><a href="/archives" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 文章 </a><a href="/friends" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 友链 </a><a href="/about" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 关于 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 4k 字 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 6 篇文章 </a><a href="https://astro.build" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Astro </a><a href="https://tailwindcss.com" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Tailwind CSS </a><a href="/" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 首页 </a><a href="/weekly" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 周刊 </a><a href="/archives" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 文章 </a><a href="/friends" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 友链 </a><a href="/about" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 关于 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 4k 字 </a><a href="#" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> 6 篇文章 </a><a href="https://astro.build" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Astro </a><a href="https://tailwindcss.com" class="marquee-item shrink-0 px-6 text-sm text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap" data-astro-cid-sz7xmlte> Tailwind CSS </a> </div> </div> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" data-astro-cid-sz7xmlte> <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte> <a href="/" class="text-lg font-bold text-primary hover:opacity-80 transition-opacity" data-astro-cid-sz7xmlte> Sify Blog </a> <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 leading-relaxed" data-astro-cid-sz7xmlte> 一个基于 Astro 的现代化博客主题 </p> <div class="flex items-center gap-3 mt-4" data-astro-cid-sz7xmlte> <span class="text-xs text-gray-400 dark:text-gray-500" data-astro-cid-sz7xmlte> 6 篇文章 · 4k 字
+</span> </div> </div> <div data-astro-cid-sz7xmlte> <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4" data-astro-cid-sz7xmlte>导航</h3> <ul class="space-y-2.5" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte> <a href="/" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 首页 </a> </li><li data-astro-cid-sz7xmlte> <a href="/weekly" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 周刊 </a> </li><li data-astro-cid-sz7xmlte> <a href="/archives" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 文章 </a> </li><li data-astro-cid-sz7xmlte> <a href="/friends" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 友链 </a> </li><li data-astro-cid-sz7xmlte> <a href="/about" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> 关于 </a> </li> </ul> </div> <div data-astro-cid-sz7xmlte> <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4" data-astro-cid-sz7xmlte>社交</h3> <ul class="space-y-2.5" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte> <a href="https://github.com/santisify" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> GitHub </a> </li><li data-astro-cid-sz7xmlte> <a href="/rss.xml" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte> RSS </a> </li> <li data-astro-cid-sz7xmlte> <a href="/rss.xml" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" data-astro-cid-sz7xmlte>
+RSS
+</a> </li> </ul> </div> </div> <div class="border-t border-gray-200/50 dark:border-gray-700/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400 dark:text-gray-500" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>&copy; 2026 santisify</span> <span data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" class="text-primary hover:underline" data-astro-cid-sz7xmlte>Astro</a> & <a href="https://tailwindcss.com/" class="text-cyan-500 hover:underline" data-astro-cid-sz7xmlte>Tailwind CSS</a> </span> </div> </div> </footer>  <script type="module" src="/_astro/Footer.astro_astro_type_script_index_0_lang.dEfjkTPS.js"></script> <button id="back-to-top" class="fixed bottom-8 right-8 lg:bottom-8 lg:right-8 bottom-20 right-6 z-50 p-3 rounded-full bg-primary text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90" aria-label="返回顶部"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg> </button> <script>
+  (function() {
+    function init() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+
+      function toggleButton() {
+        var show = window.scrollY > 300;
+        btn.classList.toggle('opacity-0', !show);
+        btn.classList.toggle('invisible', !show);
+      }
+
+      window.addEventListener('scroll', toggleButton);
+
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      toggleButton();
+    }
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script> <script>
+  (function() {
+    function init() {
+      if (typeof mermaid === 'undefined') return;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+        securityLevel: 'loose',
+      });
+
+      var mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+      if (mermaidBlocks.length === 0) return;
+
+      mermaidBlocks.forEach(function(pre, index) {
+        var code = pre.querySelector('code');
+        var text = '';
+        if (code) {
+          var lines = code.querySelectorAll('.line');
+          if (lines.length > 0) {
+            text = Array.from(lines).map(function(line) {
+              return line.textContent || '';
+            }).join('\n');
+          } else {
+            text = code.textContent || '';
+          }
+        }
+
+        var container = document.createElement('div');
+        container.className = 'mermaid-container my-6 p-4 bg-white dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-x-auto';
+
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.id = 'mermaid-' + index;
+        div.textContent = text;
+        container.appendChild(div);
+
+        pre.parentNode?.insertBefore(container, pre);
+        pre.remove();
+      });
+
+      mermaid.run();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    document.addEventListener('astro:after-swap', init);
+  })();
+</script>  <div class="grain-overlay" aria-hidden="true"></div> <script type="module" src="/_astro/SmoothScroll.astro_astro_type_script_index_0_lang.CCpgMc0D.js"></script> <script type="module" src="/_astro/ScrollReveal.astro_astro_type_script_index_0_lang.CSLndJPs.js"></script> <script type="module">function s(){window.matchMedia("(prefers-reduced-motion: reduce)").matches||window.matchMedia("(hover: hover) and (pointer: fine)").matches&&document.querySelectorAll(".card-tilt").forEach(e=>{e.addEventListener("mousemove",n=>{const t=e.getBoundingClientRect(),i=n.clientX-t.left,a=n.clientY-t.top,o=t.width/2,r=t.height/2,c=(a-r)/r*-8,d=(i-o)/o*8;e.style.transform=`perspective(1100px) rotateX(${c}deg) rotateY(${d}deg) translateY(-4px) scale(1.01)`,e.style.boxShadow="0 20px 40px rgba(0,0,0,0.12)"}),e.addEventListener("mouseleave",()=>{e.style.transform="",e.style.boxShadow=""})})}s();document.addEventListener("astro:after-swap",()=>{setTimeout(s,100)});</script> <script type="module">function r(){document.querySelectorAll("pre").forEach(e=>{if(e.parentElement?.classList.contains("code-block-wrapper")||e.getAttribute("data-language")==="mermaid")return;const a=e.querySelector("code")?.className.match(/language-(\w+)/)?.[1]||e.getAttribute("data-language")||"",n=document.createElement("div");if(n.className="code-block-wrapper",a&&n.setAttribute("data-lang",a),e.parentNode?.insertBefore(n,e),n.appendChild(e),a){const o=document.createElement("span");o.className="code-lang-label",o.textContent=a,n.appendChild(o)}const t=document.createElement("button");t.className="copy-btn",t.title="复制代码",t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',t.addEventListener("click",async()=>{const o=e.querySelector("code")?.textContent||e.textContent||"";await navigator.clipboard.writeText(o),t.classList.add("copied"),t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',setTimeout(()=>{t.classList.remove("copied"),t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'},2e3)}),n.appendChild(t)})}r();document.addEventListener("astro:after-swap",r);</script> <script type="module">"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").catch(()=>{})});</script> </body> </html>
