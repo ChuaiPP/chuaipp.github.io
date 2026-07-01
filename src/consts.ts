@@ -1,8 +1,8 @@
-export const SITE_TITLE = 'ChuaiPP Blog';
+export const SITE_TITLE = 'ChuaiPP';
 export const SITE_DESCRIPTION = '#渗透测试 #红蓝对抗 #武器开发';
 export const SITE_AUTHOR = 'ChuaiPP';
 export const SITE_URL = 'https://chuaipp.github.io';
-export const SITE_AVATAR = '../public/Images/hacker.png';
+export const SITE_AVATAR = '../public/images/hacker.png';
 export const SITE_COVER = 'https://santisify.top/_vercel/image?url=_astro%2Fcf2227.wczNDBh1.webp&w=1920&q=100';
 
 export const PAGE_SIZE = 10;
