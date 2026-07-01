@@ -1,8 +1,8 @@
-export const SITE_TITLE = 'Sify Blog';
-export const SITE_DESCRIPTION = '一个基于 Astro 的现代化博客主题';
-export const SITE_AUTHOR = 'santisify';
-export const SITE_URL = 'https://santisify.top';
-export const SITE_AVATAR = 'https://santisify.top/_vercel/image?url=_astro%2Favatar.BpCip-1B.png&w=1200&q=100';
+export const SITE_TITLE = 'ChuaiPP Blog';
+export const SITE_DESCRIPTION = '#渗透测试 #红蓝对抗 #武器开发';
+export const SITE_AUTHOR = 'ChuaiPP';
+export const SITE_URL = 'https://chuaipp.github.io';
+export const SITE_AVATAR = '../public/Images/hacker.png';
 export const SITE_COVER = 'https://santisify.top/_vercel/image?url=_astro%2Fcf2227.wczNDBh1.webp&w=1920&q=100';
 
 export const PAGE_SIZE = 10;
@@ -16,7 +16,7 @@ export const NAV_ITEMS = [
 ];
 
 export const SOCIAL_LINKS = [
-  { name: 'GitHub', href: 'https://github.com/santisify', icon: 'github' },
+  { name: 'GitHub', href: 'https://github.com/ChuaiPP', icon: 'github' },
   { name: 'RSS', href: '/rss.xml', icon: 'rss' },
 ];
 
